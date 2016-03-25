@@ -61,4 +61,9 @@ margin-left: -51.2em;
 margin-top: -28.8em;
 overflow: hidden;
 background: red;
+/*Added*/
+background-image: url('../images/blueClouds.jpg');
+/*background-position: 50% 0;
+background-repeat: no-repeat;
+background-size: cover;*/
 }
