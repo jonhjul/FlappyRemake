@@ -1,6 +1,6 @@
 window.Game = (function() {
     'use strict';
-
+    var Controls = window.Controls;
     /**
      * Main game class.
      * @param {Element} el jQuery element containing the game.
@@ -9,7 +9,9 @@ window.Game = (function() {
     var Game = function(el) {
         this.el = el;
         this.player = new window.Player(this.el.find('.Player'), this);
+        this.floor = new window.Floor(this.el.find('.Floor'),0,this.WORLD_HEIGHT-(10.4/2) , 10.4, 3.95, this);
         this.isPlaying = false;
+        this.hasStarted = false;
 
         var fontSize = Math.min(
             window.innerWidth / 102.4,
@@ -39,7 +41,8 @@ window.Game = (function() {
 
         // Update game entities.
         this.player.onFrame(delta);
-
+      /*this.floor.onFrame(delta);
+*/
         // Request next frame.
         window.requestAnimationFrame(this.onFrame);
     };
@@ -61,6 +64,8 @@ window.Game = (function() {
      */
     Game.prototype.reset = function() {
         this.player.reset();
+
+        this.isPlaying = true;
     };
 
     /**
@@ -68,6 +73,7 @@ window.Game = (function() {
      */
     Game.prototype.gameover = function() {
         this.isPlaying = false;
+        this.hasStarted = false;
 
         // Should be refactored into a Scoreboard class.
         var that = this;
@@ -77,6 +83,7 @@ window.Game = (function() {
             .find('.Scoreboard-restart')
             .one('click', function() {
                 scoreboardEl.removeClass('is-visible');
+                Controls._didJump = false;
                 that.start();
             });
     };

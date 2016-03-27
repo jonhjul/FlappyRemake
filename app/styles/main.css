@@ -6,6 +6,27 @@
     height: 5em;
     background: red;
 }
+.Player--wings {
+    /* Positioned from top left of parent.*/
+    position: absolute;
+    left: 1em;
+    top: 2em;
+    height: 3em;
+    width: 3em;
+    background: yellow;
+    transform-origin: top left;
+    animation: 0.4s flap alternate infinite;
+}
+@keyframes flap {
+    from {
+        transform: rotateX(50deg);
+    }
+    to {
+        transform: rotateX(150deg);
+    }
+}
+
+
 .Scoreboard {
     position: absolute;
     left: 50%;
@@ -59,7 +80,7 @@ body {
     margin-left: -51.2em;
     margin-top: -28.8em;
     overflow: hidden;
-    background: red;
+  /*  background: red;*/
     /*Added*/
     background-image: url('../images/blueClouds.jpg');
     background-position: 50% 0;
@@ -74,74 +95,21 @@ body {
     height: 10.8em;
     margin-left: -9.6em;
     margin-top: -5.4em;
-    background: red;
+  /*  background: red; */
     font-size: 10px;
 }
-.Player--default {
-    /* My x,y position is at the top left of my graphic */
-    margin-left: -0em;
-    margin-top: -0em;
-    transform: translate(5em, 3em);
-}
-.Player--centered {
-    /* My x,y position is at the center of my graphic*/
-    margin-left: -0.5em;
-    margin-top: -0.5em;
-    transform: translate(7em, 3em);
-}
-.Player--bottomCenter {
-    /* My x,y position is at the bottom center of my graphic*/
-    margin-left: -0.5em;
-    margin-top: -1em;
-    transform: translate(9em, 3em);
-}
-.Player--wings {
-    /* Positioned from top left of parent.*/
-    position: absolute;
-    left: 1em;
-    top: 2em;
-    height: 3em;
-    width: 3em;
-    background: yellow;
-    transform-origin: top left;
-    animation: 0.4s flap alternate infinite;
-}
-@keyframes flap {
-    from {
-        transform: rotateX(50deg);
-    }
-    to {
-        transform: rotateX(150deg);
-    }
-}
+
+
 .Controls {
     position: absolute;
 }
 
-/* Background move */
 
-#cloud-scroll {
-    width: 140em;
-    height: 1.5em;
-    background: url(../images/movBackgroundExtreme.png) repeat-y;
-    -webkit-animation: backgroundScroll 3s linear infinite;
-    animation: backgroundScroll 3s linear infinite;
+.Floor {
+	position: absolute;
+  bottom: 0;
+	background-image: url('../images/floor.png');
+	background-size:  auto;
+	width: 500em;
+	height: 3.4em;
 }
-@-webkit-keyframes backgroundScroll {
-    from {
-        background-position: 0 10em;
-    }
-    to {
-        background-position: -20em 0;
-    }
-}
-@keyframes backgroundScroll {
-    from {
-        background-position: 0 0;
-    }
-    to {
-        background-position: -20em 0;
-    }
-}
-
-/**/

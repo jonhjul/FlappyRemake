@@ -1,4 +1,3 @@
-
 window.Controls = (function() {
     'use strict';
 
@@ -6,6 +5,7 @@ window.Controls = (function() {
      * Key codes we're interested in.
      */
     var KEYS = {
+        0: 'mouse',
         32: 'space',
         37: 'left',
         38: 'up',
@@ -25,6 +25,8 @@ window.Controls = (function() {
         $(window)
             .on('keydown', this._onKeyDown.bind(this))
             .on('keyup', this._onKeyUp.bind(this));
+        $('.GameCanvas')
+            .on('mousedown', this._onMouseClick.bind(this));
     };
 
     Controls.prototype._onKeyDown = function(e) {
@@ -38,6 +40,12 @@ window.Controls = (function() {
             var keyName = KEYS[e.keyCode];
             this.keys[keyName] = true;
             return false;
+        }
+    };
+
+    Controls.prototype._onMouseClick = function(e) {
+        if (e.button === 0) {
+            this._didJump = true;
         }
     };
 
@@ -57,7 +65,7 @@ window.Controls = (function() {
         this._didJump = false;
         return answer;
     };
-    
+
     // Export singleton.
     return new Controls();
 })();
