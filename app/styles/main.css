@@ -107,9 +107,8 @@ body {
 }
 .Floor {
     position: absolute;
-    bottom: 0;
     background-image: url('../images/ground.png');
     background-size: auto;
-    width: 500em;
-    height: 2.5em;
+    width: 106em;
+    height: 3em;
 }

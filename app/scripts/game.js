@@ -9,7 +9,7 @@ window.Game = (function() {
     var Game = function(el) {
         this.el = el;
         this.player = new window.Player(this.el.find('.Player'), this);
-        this.floor = new window.Floor(this.el.find('.Floor'),0,this.WORLD_HEIGHT-(10.4/2) , 10.4, 3.95, this);
+        this.floor = new window.Floor(this.el.find('.Floor'), this, 0, this.WORLD_HEIGHT-3, 3, 4);
         this.isPlaying = false;
         this.hasStarted = false;
 
@@ -41,8 +41,7 @@ window.Game = (function() {
 
         // Update game entities.
         this.player.onFrame(delta);
-      /*this.floor.onFrame(delta);
-*/
+        this.floor.onFrame(delta);
         // Request next frame.
         window.requestAnimationFrame(this.onFrame);
     };
