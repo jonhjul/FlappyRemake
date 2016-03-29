@@ -4,7 +4,7 @@
     left: 0;
     width: 5em;
     height: 5em;
-    background: red;
+    /* background: red; */
 }
 .Player--bird {
     position: absolute;
@@ -71,8 +71,6 @@
     -o-background-size: cover;
     background-size: cover;
 }
-*/
-
 .PipeLower {
     position: absolute;
     width: 5.2em;
@@ -81,8 +79,6 @@
     background-image: url('/images/pipe2.png');
     -webkit-transform: translateZ(0);
 }
-
-/* Efri pípa */
 
 .PipeUpper {
     position: absolute;
@@ -93,15 +89,9 @@
     -webkit-transform: translateZ(0);
 }
 .PipePair div {
-    /*left: 40em;*/
     -webkit-transform: translateZ(0);
     -webkit-animation: pipes 8s linear;
 }
-
-/**
-* Reset transform to animate it into the correct spot on the screen.
-*/
-
 @keyframes pipes {
     from {
         transform: translate3d(104em, 0, 0);
@@ -110,6 +100,8 @@
         transform: translate3d(-10em, 0, 0);
     }
 }
+*/
+
 .Scoreboard.is-visible {
     -webkit-transform: none;
 }
@@ -166,10 +158,101 @@ body {
 .Controls {
     position: absolute;
 }
+
+/*
 .Floor {
     position: absolute;
     background-image: url('../images/ground.png');
     background-size: auto;
     width: 106em;
     height: 3em;
+}
+*/
+
+@media -sass-debug-info {
+    filename {
+        font-family: file\: \/\/C\: \/Vef_last_assign\/vef4\/app\/styles\/_game-canvas\.scss;
+    }
+    line {
+        font-family: \0000396;
+    }
+}
+.Grass {
+    height: 2em;
+    width: 180em;
+    position: absolute;
+    bottom: 0;
+    background-image: url("/images/grass2.png");
+    background-position: 0px 0px;
+    background-repeat: repeat-x;
+    background-size: 14px 2em;
+    z-index: 100;
+    -webkit-animation: animateGrass linear infinite;
+    -os-animation: animateGrass linear infinite;
+    animation: animateGrass linear infinite;
+    -webkit-animation-duration: 1.456s;
+    animation-duration: 1.456s;
+}
+@-webkit-keyframes animateGrass {
+    from {
+        -webkit-transform: translate3d(0, 0, 0);
+    }
+    to {
+        -webkit-transform: translate3d(-400px, 0, 0);
+    }
+}
+@keyframes animateGrass {
+    from {
+        -webkit-transform: translate3d(0, 0, 0);
+        transform: translate3d(0, 0, 0);
+    }
+    to {
+        -webkit-transform: translate3d(-400px, 0, 0);
+        transform: translate3d(-400px, 0, 0);
+    }
+}
+.Pipedown1, .Pipedown2, .Pipedown3 {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    background-image: url("/images/pipe2.png");
+    /*
+  background-image: url("/images/pipe2.png"), url("/images/bown.png");
+  */
+    background-repeat: no-repeat, repeat-y;
+    width: 10em;
+    height: 18em;
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+.Pipeup1, .Pipeup2, .Pipeup3 {
+    position: absolute;
+    top: 0;
+    right: 0;
+    /*
+  background-image: url("/images/pipe1.png"), url("/images/bup.png");
+*/
+    background-image: url("/images/pipe1.png");
+    background-repeat: no-repeat, repeat-y;
+    background-position: left bottom;
+    width: 10em;
+    height: 28em;
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+@media -sass-debug-info {
+    filename {
+        font-family: file\: \/\/C\: \/Vef_last_assign\/vef4\/app\/styles\/_scoreboard\.scss;
+    }
+    line {
+        font-family: \000032;
+    }
 }

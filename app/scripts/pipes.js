@@ -1,3 +1,4 @@
+/*
 window.Pipes = (function() {
     'use strict';
 
@@ -83,8 +84,8 @@ window.Pipes = (function() {
             }
             if (player.offset().left >= (currentPipe.offset().left + currentPipe.width())) {
                 ++this.game.score;
-                /* $('#currentscore').text(this.game.score);
-                $('#Scoreboard-score').text(this.game.score); */
+                 $('#currentscore').text(this.game.score);
+                $('#Scoreboard-score').text(this.game.score); 
                 ++this.myID;
             }
         }
@@ -93,3 +94,4 @@ window.Pipes = (function() {
     return Pipes;
 
 })();
+*/

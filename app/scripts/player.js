@@ -82,9 +82,34 @@ window.Player = (function() {
         }
 
         this.checkCollisionWithBounds();
-
+        this.checkCollisionWithPipes();
         // Update UI
         this.el.css('transform', 'translateZ(0) translate(' + this.pos.x + 'em, ' + this.pos.y + 'em)');
+    };
+
+    Player.prototype.checkCollisionWithPipes = function() {
+        var playerX = this.pos.x + 23;
+        var playerY = Math.floor(this.pos.y);
+
+        for (var i = 0; i < this.game.pipe.pipeArr.length; i++) {
+            var pipePosX = Math.floor(this.game.pipe.pipeArr[i].bottom.pos.x);
+            var lowerPipePosY = this.game.pipe.pipeArr[i].bottom.pipe[0].style.height;
+            var topPipePosY = this.game.pipe.pipeArr[i].top.pipe[0].style.height;
+            lowerPipePosY = Math.floor(this.game.WORLD_HEIGHT - lowerPipePosY.substring(0, lowerPipePosY.length - 2));
+            topPipePosY = Math.floor(topPipePosY.substring(0, topPipePosY.length - 2));
+            if (-pipePosX >= playerX + WIDTH && (-pipePosX - WIDTH * 2) <= playerX + WIDTH) {
+                if (lowerPipePosY < playerY + HEIGHT || topPipePosY > playerY) {
+                    $('.Game-Score').hide();
+                    return this.game.gameover();
+                } else {
+                    if (this.scorePipe !== this.game.pipe.pipeArr[i].name) {
+                        this.game.score += 1;
+                        $('.Game-Score').html(this.game.score);
+                        this.scorePipe = this.game.pipe.pipeArr[i].name;
+                    }
+                }
+            }
+        }
     };
 
     Player.prototype.checkCollisionWithBounds = function() {
@@ -94,7 +119,7 @@ window.Player = (function() {
             this.pos.y + HEIGHT > this.game.WORLD_HEIGHT) {
             return this.game.gameover();
         }
-        this.game.pipes.checkCollision();
+        // this.game.pipes.checkCollision();
     };
 
     return Player;
