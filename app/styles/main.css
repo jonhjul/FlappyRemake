@@ -4,7 +4,7 @@
     left: 0;
     width: 5em;
     height: 5em;
-    /* background: red; */
+    background: red;
 }
 .Player--bird {
     position: absolute;
@@ -45,6 +45,7 @@
     -webkit-transform: translate(0, -40em);
     -webkit-transition: -webkit-transform 0.5s;
 }
+/*
 .PipeUpper {
     bottom: 35em;
     position: absolute;
@@ -68,6 +69,23 @@
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
+*/
+.PipeLower {
+	position: absolute;
+	width: 5.2em;
+	height: 31em;
+  background-size: 100% 100%;
+	background-image: url('/images/pipe2.png');
+	-webkit-transform: translateZ(0);
+}
+/* Efri pípa */
+.PipeUpper {
+	position: absolute;
+	width: 5.2em;
+	height: 31em;
+  background-size: 100% 100%;
+	background-image: url('/images/pipe1.png');
+	-webkit-transform: translateZ(0);
 }
 .PipePair div {
     /*left: 40em;*/
@@ -80,12 +98,21 @@
 */
 
 @keyframes pipes {
+<<<<<<< Updated upstream
     from {
         -webkit-transform: translate3d(102.4em, 0, 0);
     }
     to {
         -webkit-transform: translate3d(-10em, 0, 0);
     }
+=======
+	from {
+		transform: translate3d(104em,0,0);
+	}
+	to {
+		transform: translate3d(-10em,0,0);
+	}
+>>>>>>> Stashed changes
 }
 .Scoreboard.is-visible {
     -webkit-transform: none;
