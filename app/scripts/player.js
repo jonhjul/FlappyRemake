@@ -47,7 +47,12 @@ window.Player = (function() {
         if (this.jumped) {
             this.game.hasStarted = true;
             SPEED = this.JUMP_SPEED;
-
+            var wing = document.getElementById('sfx_wing');
+            if (!mute) {
+                wing.pause();
+                wing.currentTime = 0;
+                wing.play();
+            }
         }
 
         if (this.jumped && !this.isJumping) {
@@ -86,7 +91,7 @@ window.Player = (function() {
         if (this.pos.x < 0 ||
             this.pos.x + WIDTH > this.game.WORLD_WIDTH ||
             this.pos.y < 0 ||
-            this.pos.y + HEIGHT > this.game.WORLD_HEIGHT-3) {
+            this.pos.y + HEIGHT > this.game.WORLD_HEIGHT) {
             return this.game.gameover();
         }
     };

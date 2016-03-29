@@ -9,13 +9,15 @@ window.Game = (function() {
     var Game = function(el) {
         this.el = el;
         this.player = new window.Player(this.el.find('.Player'), this);
-        this.floor = new window.Floor(this.el.find('.Floor'), this, 0, this.WORLD_HEIGHT-3, 3, 4);
+        this.floor = new window.Floor(this.el.find('.Floor'), this, 0, this.WORLD_HEIGHT - 3, 3, 4);
+        this.tube.push(new window.Tube(this.el.find('.Tube1'), this.WORLD_WIDTH + this.tubeDist * 3, 35, 30, this.tubeWidth, this, false));
+        this.tube.push(new window.Tube(this.el.find('.Tube2'), this.WORLD_WIDTH + this.tubeDist * 3, 0, 15, this.tubeWidth, this, true));
         this.isPlaying = false;
         this.hasStarted = false;
 
         var fontSize = Math.min(
             window.innerWidth / 102.4,
-            window.innerHeight /  57.6
+            window.innerHeight / 57.6
         );
         el.css('fontSize', fontSize + 'px');
 
@@ -66,14 +68,18 @@ window.Game = (function() {
 
         this.isPlaying = true;
     };
+    Game.prototype.updatePipes = function() {
 
+    };
     /**
      * Signals that the game is over.
      */
     Game.prototype.gameover = function() {
         this.isPlaying = false;
         this.hasStarted = false;
-
+        if (!mute) {
+            document.getElementById('sfx_die').play();
+        }
         // Should be refactored into a Scoreboard class.
         var that = this;
         var scoreboardEl = this.el.find('.Scoreboard');

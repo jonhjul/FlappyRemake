@@ -41,6 +41,7 @@
     box-sizing: border-box;
     background: purple;
     text-align: center;
+    /* background-image: url('../images/scoreboard.png'); */
     -webkit-transform: translate(0, -40em);
     -webkit-transition: -webkit-transform 0.5s;
 }
