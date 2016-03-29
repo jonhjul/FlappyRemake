@@ -10,8 +10,15 @@ window.Game = (function() {
         this.el = el;
         this.player = new window.Player(this.el.find('.Player'), this);
         this.floor = new window.Floor(this.el.find('.Floor'), this, 0, this.WORLD_HEIGHT - 3, 3, 4);
-        this.tube.push(new window.Tube(this.el.find('.Tube1'), this.WORLD_WIDTH + this.tubeDist * 3, 35, 30, this.tubeWidth, this, false));
-        this.tube.push(new window.Tube(this.el.find('.Tube2'), this.WORLD_WIDTH + this.tubeDist * 3, 0, 15, this.tubeWidth, this, true));
+        this.pipes = new window.Pipes(this.el.find('.Pipes'), this);
+        this.isPlaying = false;
+        this.hasStarted = false;
+        this.frameCount = 0;
+        this.highscore = 0;
+        this.score = 0;
+        // this.tube = [];
+        // this.tube.push(new window.Tube(this.el.find('.Tube1'), this.WORLD_WIDTH + this.tubeDist * 3, 35, 30, this.tubeWidth, this, false));
+        // this.tube.push(new window.Tube(this.el.find('.Tube2'), this.WORLD_WIDTH + this.tubeDist * 3, 0, 15, this.tubeWidth, this, true));
         this.isPlaying = false;
         this.hasStarted = false;
 
@@ -35,7 +42,7 @@ window.Game = (function() {
         if (!this.isPlaying) {
             return;
         }
-
+        ++this.frameCount;
         // Calculate how long since last frame in seconds.
         var now = +new Date() / 1000,
             delta = now - this.lastFrame;
@@ -44,6 +51,10 @@ window.Game = (function() {
         // Update game entities.
         this.player.onFrame(delta);
         this.floor.onFrame(delta);
+        if (this.frameCount === 100) {
+            this.pipes.addPipe();
+            this.frameCount = 0;
+        }
         // Request next frame.
         window.requestAnimationFrame(this.onFrame);
     };
@@ -65,11 +76,10 @@ window.Game = (function() {
      */
     Game.prototype.reset = function() {
         this.player.reset();
-
+        this.pipes.reset();
+        this.frameCount = 0;
         this.isPlaying = true;
-    };
-    Game.prototype.updatePipes = function() {
-
+        this.score = 0;
     };
     /**
      * Signals that the game is over.

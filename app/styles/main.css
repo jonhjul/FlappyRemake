@@ -45,11 +45,38 @@
     -webkit-transform: translate(0, -40em);
     -webkit-transition: -webkit-transform 0.5s;
 }
-
+.PipeUpper {
+	bottom: 35em;
+	position: absolute;
+	width: 5.2em;
+	height: 31em;
+	background-image: url('/images/pipe1.png');
+	-webkit-transform: translate3d(0,0,0);
+}
+.PipeLower {
+	top: 25em;
+	position: absolute;
+	width: 5.2em;
+	height: 31em;
+	background-image: url('/images/pipe2.png');
+	-webkit-transform: translateZ(0);
+}
+.PipePair div {
+	/*left: 40em;*/
+	-webkit-transform: translateZ(0);
+	-webkit-animation: pipes 8s linear;
+}
 /**
 * Reset transform to animate it into the correct spot on the screen.
 */
-
+@keyframes pipes {
+	from {
+		-webkit-transform: translate3d(102.4em,0,0);
+	}
+	to {
+		-webkit-transform: translate3d(-10em,0,0);
+	}
+}
 .Scoreboard.is-visible {
     -webkit-transform: none;
 }

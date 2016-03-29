@@ -94,6 +94,7 @@ window.Player = (function() {
             this.pos.y + HEIGHT > this.game.WORLD_HEIGHT) {
             return this.game.gameover();
         }
+        this.game.pipes.checkCollision();
     };
 
     return Player;
