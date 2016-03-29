@@ -48,7 +48,7 @@ window.Player = (function() {
             this.game.hasStarted = true;
             SPEED = this.JUMP_SPEED;
             var wing = document.getElementById('sfx_wing');
-            if (!mute) {
+            if (!this.game.mute) {
                 wing.pause();
                 wing.currentTime = 0;
                 wing.play();

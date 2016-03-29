@@ -7,11 +7,11 @@
     /* background: red; */
 }
 .Player--bird {
-  position: absolute;
-  left: -1.25em;
-  top: -1.5em;
-  height: 7.5em;
-  width: 7.5em;
+    position: absolute;
+    left: -1.25em;
+    top: -1.5em;
+    height: 7.5em;
+    width: 7.5em;
 }
 .Player--wings {
     /* Positioned from top left of parent.*/
@@ -46,36 +46,46 @@
     -webkit-transition: -webkit-transform 0.5s;
 }
 .PipeUpper {
-	bottom: 35em;
-	position: absolute;
-	width: 5.2em;
-	height: 31em;
-	background-image: url('/images/pipe1.png');
-	-webkit-transform: translate3d(0,0,0);
+    bottom: 35em;
+    position: absolute;
+    width: 5.2em;
+    height: 31em;
+    background-image: url('/images/pipe1.png');
+    -webkit-transform: translate3d(0, 0, 0);
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
 }
 .PipeLower {
-	top: 25em;
-	position: absolute;
-	width: 5.2em;
-	height: 31em;
-	background-image: url('/images/pipe2.png');
-	-webkit-transform: translateZ(0);
+    top: 25em;
+    position: absolute;
+    width: 5.2em;
+    height: 31em;
+    background-image: url('/images/pipe2.png');
+    -webkit-transform: translate3d(0, 0, 0);
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
 }
 .PipePair div {
-	/*left: 40em;*/
-	-webkit-transform: translateZ(0);
-	-webkit-animation: pipes 8s linear;
+    /*left: 40em;*/
+    -webkit-transform: translateZ(0);
+    -webkit-animation: pipes 8s linear;
 }
+
 /**
 * Reset transform to animate it into the correct spot on the screen.
 */
+
 @keyframes pipes {
-	from {
-		-webkit-transform: translate3d(102.4em,0,0);
-	}
-	to {
-		-webkit-transform: translate3d(-10em,0,0);
-	}
+    from {
+        -webkit-transform: translate3d(102.4em, 0, 0);
+    }
+    to {
+        -webkit-transform: translate3d(-10em, 0, 0);
+    }
 }
 .Scoreboard.is-visible {
     -webkit-transform: none;

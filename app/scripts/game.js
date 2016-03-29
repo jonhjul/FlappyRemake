@@ -16,6 +16,7 @@ window.Game = (function() {
         this.frameCount = 0;
         this.highscore = 0;
         this.score = 0;
+        this.mute = false;
         // this.tube = [];
         // this.tube.push(new window.Tube(this.el.find('.Tube1'), this.WORLD_WIDTH + this.tubeDist * 3, 35, 30, this.tubeWidth, this, false));
         // this.tube.push(new window.Tube(this.el.find('.Tube2'), this.WORLD_WIDTH + this.tubeDist * 3, 0, 15, this.tubeWidth, this, true));
@@ -81,13 +82,34 @@ window.Game = (function() {
         this.isPlaying = true;
         this.score = 0;
     };
+
+
+    Game.prototype.toggleSound = function() {
+        if (!this.mute) {
+            this.mute = true;
+            $('.nosound').show();
+            $('.sound').hide();
+            var sounds = document.getElementsByClassName('sfx');
+            for (var i = 0; i < sounds.length; i++) {
+                sounds[i].pause();
+                sounds[i].currentTime = 0;
+            }
+        } else {
+            this.mute = false;
+            $('.nosound').hide();
+            $('.sound').show();
+            document.getElementById('theme_music').play();
+        }
+
+    };
+
     /**
      * Signals that the game is over.
      */
     Game.prototype.gameover = function() {
         this.isPlaying = false;
         this.hasStarted = false;
-        if (!mute) {
+        if (!this.mute) {
             document.getElementById('sfx_die').play();
         }
         // Should be refactored into a Scoreboard class.

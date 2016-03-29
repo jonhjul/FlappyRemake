@@ -51,8 +51,8 @@
             </button>
         </div>
         <div class="Floor"></div>
-        <div class="sound"><img width="50px" onclick="toggleSound()" src="images/sound.png" alt="" /></div>
-        <div class="nosound" hidden><img width="50px" onclick="toggleSound()" src="images/nosound.png" alt="" /></div>
+        <div class="sound"><img width="50px" onclick="window.Game.prototype.toggleSound()" src="images/sound.png" alt="" /></div>
+        <div class="nosound" hidden><img width="50px" onclick="window.Game.prototype.toggleSound()" src="images/nosound.png" alt="" /></div>
     </div>
     <div class="Controls">
         <button class="zoomIn">+</button>
@@ -73,7 +73,6 @@
     <script src="scripts/player.js"></script>
     <script src="scripts/utils.js"></script>
     <script src="scripts/floor.js"></script>
-    <script src="scripts/sound.js"></script>
     <script src="scripts/pipes.js"></script>
     <!-- endbuild -->
 </body>

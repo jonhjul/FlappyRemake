@@ -26,7 +26,7 @@ window.Pipes = (function() {
         var pipeLowerHeight = this.game.WORLD_HEIGHT - (pipeUpperHeight - gapHeight);
         console.log("pipeLowerHeight: " + pipeLowerHeight);
         console.log("pipeUpperHeight: " + pipeUpperHeight);
-        console.log(pipeUpperHeight - pipeLowerHeight)
+        console.log(pipeUpperHeight - pipeLowerHeight);
         var pipe = '<div class="PipePair" id="pip' +
             this.pipeID +
             '"><div class="PipeUpper" id="upper' +
