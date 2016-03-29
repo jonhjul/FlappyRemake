@@ -14,14 +14,11 @@ window.Game = (function() {
         this.frameCount = 0;
         this.highscore = 0;
         this.score = 0;
-<<<<<<< Updated upstream
         this.mute = false;
         // this.tube = [];
         // this.tube.push(new window.Tube(this.el.find('.Tube1'), this.WORLD_WIDTH + this.tubeDist * 3, 35, 30, this.tubeWidth, this, false));
         // this.tube.push(new window.Tube(this.el.find('.Tube2'), this.WORLD_WIDTH + this.tubeDist * 3, 0, 15, this.tubeWidth, this, true));
         this.isPlaying = false;
-=======
->>>>>>> Stashed changes
         this.hasStarted = false;
 
         var fontSize = Math.min(
@@ -125,6 +122,7 @@ window.Game = (function() {
                 that.start();
             });
     };
+
 
     /**
      * Some shared constants.
