@@ -15,15 +15,18 @@ window.Player = (function() {
     var Player = function(el, game) {
         this.el = el;
         this.game = game;
-        this.isJumping = false;
+        // this.isJumping = false;
         this.JUMP_SPEED = SPEED - 3;
         this.WIDTH = document.getElementsByClassName('Player').offsetWidth;
         this.HEIGHT = document.getElementsByClassName('Player').offsetHeight;
-        this.jumped = false;
+        // this.jumped = false;
         this.pos = {
             x: 0,
             y: 0
         };
+        this.scorePipe = '';
+        this.velocity = 0;
+        this.degs = 0;
     };
 
     /**
@@ -33,7 +36,12 @@ window.Player = (function() {
         this.pos.x = INITIAL_POSITION_X;
         this.pos.y = INITIAL_POSITION_Y;
         SPEED = 0;
-        this.isJumping = false;
+        // this.isJumping = false;
+        this.game.score = 0;
+        this.scorePipe = '';
+        this.velocity = 0;
+        $('.Game-Score').show();
+        $('.Game-Score').html('0');
     };
 
     Player.prototype.onFrame = function() {
@@ -48,7 +56,8 @@ window.Player = (function() {
             this.game.hasStarted = true;
             SPEED = this.JUMP_SPEED;
             var wing = document.getElementById('sfx_wing');
-            if (!this.game.mute) {
+            wing.volume = 0.1;
+            if (!this.mute) {
                 wing.pause();
                 wing.currentTime = 0;
                 wing.play();
@@ -56,6 +65,7 @@ window.Player = (function() {
         }
 
         if (this.jumped && !this.isJumping) {
+            // console.log('Er að hoppa upp hér!');
             this.game.isPlaying = true;
             this.isJumping = true;
         } else if (this.jumped && this.isJumping) {
@@ -65,7 +75,8 @@ window.Player = (function() {
 
         if (this.isJumping) {
             this.pos.y -= SPEED;
-            if ((SPEED -= 0.10) < 0) {
+            if ((SPEED -= 0.15) < 0) {
+                // console.log('Er að detta niður hér!');
                 this.isJumping = false;
             }
             // Update UI
@@ -90,7 +101,8 @@ window.Player = (function() {
     Player.prototype.checkCollisionWithPipes = function() {
         var playerX = this.pos.x + 23;
         var playerY = Math.floor(this.pos.y);
-
+        var hit = document.getElementById('sfx_hit');
+        hit.volume = 0.5;
         for (var i = 0; i < this.game.pipe.pipeArr.length; i++) {
             var pipePosX = Math.floor(this.game.pipe.pipeArr[i].bottom.pos.x);
             var lowerPipePosY = this.game.pipe.pipeArr[i].bottom.pipe[0].style.height;
@@ -100,6 +112,11 @@ window.Player = (function() {
             if (-pipePosX >= playerX + WIDTH && (-pipePosX - WIDTH * 2) <= playerX + WIDTH) {
                 if (lowerPipePosY < playerY + HEIGHT || topPipePosY > playerY) {
                     $('.Game-Score').hide();
+                    if (!this.mute) {
+                        hit.pause();
+                        hit.currentTime = 0;
+                        hit.play();
+                    }
                     return this.game.gameover();
                 } else {
                     if (this.scorePipe !== this.game.pipe.pipeArr[i].name) {
@@ -116,7 +133,14 @@ window.Player = (function() {
         if (this.pos.x < 0 ||
             this.pos.x + WIDTH > this.game.WORLD_WIDTH ||
             this.pos.y < 0 ||
-            this.pos.y + HEIGHT > this.game.WORLD_HEIGHT) {
+            this.pos.y + HEIGHT > this.game.WORLD_HEIGHT - 3) {
+            var die = document.getElementById('sfx_die');
+            die.volume = 0.5;
+            if (!this.mute) {
+                die.pause();
+                die.currentTime = 0;
+                die.play();
+            }
             return this.game.gameover();
         }
         // this.game.pipes.checkCollision();

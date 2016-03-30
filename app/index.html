@@ -53,11 +53,14 @@
         <div class="Pipeup2 Pipe"></div>
         <div class="Pipedown3 Pipe"></div>
         <div class="Pipeup3 Pipe"></div>
-
         <div class="Scoreboard">
-            <button class="Scoreboard-restart">
-                <span class="Scoreboard-restartText">Restart</span>
-            </button>
+            <span class="Score"></span>
+            <h2 class="High-score-text"></h2>
+            <span class="High-score"></span>
+            <span class="Scoreboard-restartText"><img class="Start-replay" src="images/replay.png"></img></span>
+        </div>
+        <div class="Start">
+            <span class="Start-restart"><img class="Start-intro" src="images/intro.png"></img></span>
         </div>
         <div class="Ground"></div>
         <div class="sound"><img width="50px" onclick="window.Game.prototype.toggleSound()" src="images/sound.png" alt="" /></div>
@@ -83,9 +86,6 @@
     <script src="scripts/utils.js"></script>
     <script src="scripts/ground.js"></script>
     <script src="scripts/clouds.js"></script>
-<!--
-    <script src="scripts/floor.js"></script>
--->
     <script src="scripts/pipe.js"></script>
     <!-- endbuild -->
 </body>

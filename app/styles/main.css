@@ -39,85 +39,22 @@
     width: 40em;
     margin-left: -20em;
     box-sizing: border-box;
-    background: purple;
     text-align: center;
-    /* background-image: url('../images/scoreboard.png'); */
     -webkit-transform: translate(0, -40em);
     -webkit-transition: -webkit-transform 0.5s;
 }
-
-/*
-.PipeUpper {
-    bottom: 35em;
-    position: absolute;
-    width: 5.2em;
-    height: 31em;
-    background-image: url('/images/pipe1.png');
-    -webkit-transform: translate3d(0, 0, 0);
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
-}
-.PipeLower {
-    top: 25em;
-    position: absolute;
-    width: 5.2em;
-    height: 31em;
-    background-image: url('/images/pipe2.png');
-    -webkit-transform: translate3d(0, 0, 0);
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
-}
-.PipeLower {
-    position: absolute;
-    width: 5.2em;
-    height: 31em;
-    background-size: 100% 100%;
-    background-image: url('/images/pipe2.png');
-    -webkit-transform: translateZ(0);
-}
-
-.PipeUpper {
-    position: absolute;
-    width: 5.2em;
-    height: 31em;
-    background-size: 100% 100%;
-    background-image: url('/images/pipe1.png');
-    -webkit-transform: translateZ(0);
-}
-.PipePair div {
-    -webkit-transform: translateZ(0);
-    -webkit-animation: pipes 8s linear;
-}
-@keyframes pipes {
-    from {
-        transform: translate3d(104em, 0, 0);
-    }
-    to {
-        transform: translate3d(-10em, 0, 0);
-    }
-}
-*/
-
 .Scoreboard.is-visible {
     -webkit-transform: none;
 }
-.Scoreboard-restart {
-    margin-top: 20em;
-    font-size: inherit;
-    padding: 0.4em 1.5em;
-    border: 0.2em solid white;
-    background: none;
-    cursor: pointer;
-}
+
+/*
 .Scoreboard-restartText {
     font-family: 'Comic Sans MS', serif;
     font-size: 2.4em;
     color: white;
 }
+*/
+
 body {
     background: black;
 }
@@ -137,8 +74,6 @@ body {
     margin-left: -51.2em;
     margin-top: -28.8em;
     overflow: hidden;
-    /*  background: red;*/
-    /*Added*/
     background-image: url('../images/bg.png');
     background-position: 50% 100%;
     background-repeat: no-repeat;
@@ -152,14 +87,11 @@ body {
     height: 10.8em;
     margin-left: -9.6em;
     margin-top: -5.4em;
-    /*  background: red; */
     font-size: 10px;
 }
 .Controls {
     position: absolute;
 }
-
-
 .Ground {
     position: absolute;
     background-image: url('../images/ground.png');
@@ -167,42 +99,7 @@ body {
     width: 106em;
     height: 3em;
 }
-.Clouds {
-	position: absolute;
-	background-image: url('../images/cloud.png');
-  background-repeat: repeat-x;
-  background-size: 14em;
-	width: 200em;
-	height: 14em;
-}
-
-
-
-@media -sass-debug-info {
-    filename {
-        font-family: file\: \/\/C\: \/Vef_last_assign\/vef4\/app\/styles\/_game-canvas\.scss;
-    }
-    line {
-        font-family: \0000396;
-    }
-}
-.Grass {
-    height: 2em;
-    width: 180em;
-    position: absolute;
-    bottom: 0;
-    background-image: url("/images/grass2.png");
-    background-position: 0px 0px;
-    background-repeat: repeat-x;
-    background-size: 14px 2em;
-    z-index: 100;
-    -webkit-animation: animateGrass linear infinite;
-    -os-animation: animateGrass linear infinite;
-    animation: animateGrass linear infinite;
-    -webkit-animation-duration: 1.456s;
-    animation-duration: 1.456s;
-}
-@-webkit-keyframes animateGrass {
+@-webkit-keyframes animateGround {
     from {
         -webkit-transform: translate3d(0, 0, 0);
     }
@@ -210,7 +107,7 @@ body {
         -webkit-transform: translate3d(-400px, 0, 0);
     }
 }
-@keyframes animateGrass {
+@keyframes animateGround {
     from {
         -webkit-transform: translate3d(0, 0, 0);
         transform: translate3d(0, 0, 0);
@@ -220,14 +117,19 @@ body {
         transform: translate3d(-400px, 0, 0);
     }
 }
+.Clouds {
+    position: absolute;
+    background-image: url('../images/cloud.png');
+    background-repeat: repeat-x;
+    background-size: 14em;
+    width: 200em;
+    height: 14em;
+}
 .Pipedown1, .Pipedown2, .Pipedown3 {
     position: absolute;
     bottom: 0;
     right: 0;
     background-image: url("/images/pipe2.png");
-    /*
-  background-image: url("/images/pipe2.png"), url("/images/bown.png");
-  */
     background-repeat: no-repeat, repeat-y;
     width: 10em;
     height: 18em;
@@ -242,9 +144,6 @@ body {
     position: absolute;
     top: 0;
     right: 0;
-    /*
-  background-image: url("/images/pipe1.png"), url("/images/bup.png");
-*/
     background-image: url("/images/pipe1.png");
     background-repeat: no-repeat, repeat-y;
     background-position: left bottom;
@@ -257,11 +156,104 @@ body {
     -o-background-size: cover;
     background-size: cover;
 }
-@media -sass-debug-info {
-    filename {
-        font-family: file\: \/\/C\: \/Vef_last_assign\/vef4\/app\/styles\/_scoreboard\.scss;
+.Start.is-visible {
+    -webkit-transform: none;
+    transform: none;
+}
+.Scoreboard {
+    color: red;
+    position: absolute;
+    left: 50%;
+    top: 0em;
+    height: 40em;
+    width: 44em;
+    margin-left: -20em;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    opacity: 0.9;
+    background-image: url("/images/GameOver.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    text-align: center;
+    -webkit-transform: translate(0, -40em);
+    transform: translate(0, -40em);
+    transition: -webkit-transform 0.5s;
+    transition: transform 0.5s;
+}
+.Start {
+    color: red;
+    position: absolute;
+    left: 50%;
+    top: 0em;
+    height: 40em;
+    width: 44em;
+    margin-left: -20em;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    opacity: 0.9;
+    background-image: url("/images/start.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    text-align: center;
+    -webkit-transform: translate(0, -40em);
+    transform: translate(0, -40em);
+    transition: -webkit-transform 0.5s;
+    transition: transform 0.5s;
+}
+.Start h1 {
+    font-size: 3em;
+}
+@-webkit-keyframes blink {
+    0% {
+        opacity: 1;
     }
-    line {
-        font-family: \000032;
+    50% {
+        opacity: 0;
     }
+    100% {
+        opacity: 1;
+    }
+}
+@-moz-keyframes blink {
+    0% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+@-o-keyframes blink {
+    0% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+.Start-intro {
+    margin-top: 20em;
+    height: 15em;
+    width: 30em;
+    -webkit-animation: blink 1s;
+    -webkit-animation-iteration-count: infinite;
+    -moz-animation: blink 1s;
+    -moz-animation-iteration-count: infinite;
+    -o-animation: blink 1s;
+    -o-animation-iteration-count: infinite;
+    -webkit-transform: none;
+    transform: none;
+}
+.Start-replay {
+    position: absolute;
+    cursor: pointer;
+    margin-left: -6.8em;
+    margin-top: 27em;
+    height: 7.5em;
+    width: 15em;
 }

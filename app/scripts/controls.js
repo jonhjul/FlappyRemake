@@ -5,7 +5,7 @@ window.Controls = (function() {
      * Key codes we're interested in.
      */
     var KEYS = {
-        0:  'mouse',
+        0: 'mouse',
         32: 'space',
         37: 'left',
         38: 'up',
@@ -22,6 +22,7 @@ window.Controls = (function() {
     var Controls = function() {
         this._didJump = false;
         this.keys = {};
+        this.gameStarted = false;
         $(window)
             .on('keydown', this._onKeyDown.bind(this))
             .on('keyup', this._onKeyUp.bind(this));
@@ -65,7 +66,10 @@ window.Controls = (function() {
         this._didJump = false;
         return answer;
     };
-
+    
+    Controls.prototype.startGame = function() {
+        this.gameStarted = true;
+    };
     // Export singleton.
     return new Controls();
 })();

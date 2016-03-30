@@ -1,4 +1,3 @@
-
 /**
  * Bootstrap and start the game.
  */

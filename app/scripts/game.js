@@ -13,15 +13,16 @@ window.Game = (function() {
         this.pipe = new window.Pipe(el, this);
         this.clouds = new window.Clouds(this.el.find('.Clouds'), this, 0, 5, 20);
         // this.pipes = new window.Pipes(this.el.find('.Pipes'), this);
-        // this.frameCount = 0;
-        // this.highscore = 0;
-        // this.score = 0;
+        this.isPlaying = false;
+        this.score = -1;
+        this.highscore = 0;
         this.mute = false;
         // this.tube = [];
         // this.tube.push(new window.Tube(this.el.find('.Tube1'), this.WORLD_WIDTH + this.tubeDist * 3, 35, 30, this.tubeWidth, this, false));
         // this.tube.push(new window.Tube(this.el.find('.Tube2'), this.WORLD_WIDTH + this.tubeDist * 3, 0, 15, this.tubeWidth, this, true));
-        this.isPlaying = false;
-        this.hasStarted = false;
+        // this.isPlaying = false;
+        // this.hasStarted = false;
+        this.toggleSound();
         this.toggleSound();
 
         var fontSize = Math.min(
@@ -70,15 +71,47 @@ window.Game = (function() {
     /**
      * Starts a new game.
      */
+    /*
+        Game.prototype.start = function() {
+            // this.reset();
+
+            // Restart the onFrame loop
+            this.lastFrame = +new Date() / 1000;
+            window.requestAnimationFrame(this.onFrame);
+            this.isPlaying = true;
+            this.score = 0;
+        };
+    */
     Game.prototype.start = function() {
-        this.reset();
 
-        // Restart the onFrame loop
-        this.lastFrame = +new Date() / 1000;
-        window.requestAnimationFrame(this.onFrame);
-        this.isPlaying = true;
+        if (this.score === -1) {
+            $(".Ground, .Pipedown1, .Pipedown2, .Pipedown3, .Pipeup1, .Pipeup2, .Pipeup3, .Player,.Player--bird,.Player--wing").hide();
+            var that = this;
+            var StartEl = this.el.find('.Start');
+            StartEl
+                .addClass('is-visible')
+                .find('.Start-restart')
+                .one('click', function() {
+                    $(".Ground, .Pipedown1, .Pipedown2, .Pipedown3, .Pipeup1, .Pipeup2, .Pipeup3, .Player,.Player--bird,.Player--wing").show();
+                    // $('.Ground').css('animation-play-state', 'running', '-webkit-animation-play-state', 'running');
+                    StartEl.removeClass('is-visible');
+                    //that.start();
+                    that.reset();
+                    that.lastFrame = +new Date() / 1000;
+                    window.requestAnimationFrame(that.onFrame);
+                    that.isPlaying = true;
+                    that.score = 0;
+                    $('.Player').show();
+                });
+
+        } else {
+            this.reset();
+            this.lastFrame = +new Date() / 1000;
+            window.requestAnimationFrame(this.onFrame);
+            this.isPlaying = true;
+            this.score = 0;
+        }
     };
-
     /**
      * Resets the state of the game so a new game can be started.
      */
@@ -86,9 +119,9 @@ window.Game = (function() {
         this.player.reset();
         this.pipe.reset();
         // this.pipes.reset();
-        this.frameCount = 0;
-        this.isPlaying = true;
-        this.score = 0;
+        // this.frameCount = 0;
+        // this.isPlaying = true;
+        // this.score = 0;
     };
 
 
@@ -106,7 +139,9 @@ window.Game = (function() {
             this.mute = false;
             $('.nosound').hide();
             $('.sound').show();
-            document.getElementById('theme_music').play();
+            var vid = document.getElementById('theme_music');
+            vid.play();
+            vid.volume = 0.1;
         }
 
     };
@@ -116,16 +151,14 @@ window.Game = (function() {
      */
     Game.prototype.gameover = function() {
         this.isPlaying = false;
-        this.hasStarted = false;
-        if (!this.mute) {
-            document.getElementById('sfx_die').play();
-        }
+        // this.hasStarted = false;
+        $('.Ground').css('animation-play-state', 'paused', '-webkit-animation-play-state', 'paused');
         // Should be refactored into a Scoreboard class.
         var that = this;
         var scoreboardEl = this.el.find('.Scoreboard');
         scoreboardEl
             .addClass('is-visible')
-            .find('.Scoreboard-restart')
+            .find('.Start-replay')
             .one('click', function() {
                 scoreboardEl.removeClass('is-visible');
                 Controls._didJump = false;
