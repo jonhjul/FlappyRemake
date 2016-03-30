@@ -46,7 +46,7 @@ window.Game = (function() {
         if (!this.isPlaying) {
             return;
         }
-        // ++this.frameCount;
+
 
         // Calculate how long since last frame in seconds.
         var now = +new Date() / 1000,
@@ -58,12 +58,6 @@ window.Game = (function() {
         this.player.onFrame(delta);
         this.ground.onFrame(delta);
         this.clouds.onFrame(delta);
-        /*
-        if (this.frameCount === 100) {
-            this.pipes.addPipe();
-            this.frameCount = 0;
-        }
-        */
         // Request next frame.
         window.requestAnimationFrame(this.onFrame);
     };
@@ -71,19 +65,7 @@ window.Game = (function() {
     /**
      * Starts a new game.
      */
-    /*
-        Game.prototype.start = function() {
-            // this.reset();
-
-            // Restart the onFrame loop
-            this.lastFrame = +new Date() / 1000;
-            window.requestAnimationFrame(this.onFrame);
-            this.isPlaying = true;
-            this.score = 0;
-        };
-    */
     Game.prototype.start = function() {
-
         if (this.score === -1) {
             $(".Ground, .Pipedown1, .Pipedown2, .Pipedown3, .Pipeup1, .Pipeup2, .Pipeup3, .Player,.Player--bird,.Player--wing").hide();
             var that = this;
@@ -112,20 +94,31 @@ window.Game = (function() {
             this.score = 0;
         }
     };
-    /**
+    /*
      * Resets the state of the game so a new game can be started.
      */
     Game.prototype.reset = function() {
         this.player.reset();
         this.pipe.reset();
-        // this.pipes.reset();
-        // this.frameCount = 0;
-        // this.isPlaying = true;
-        // this.score = 0;
     };
 
 
     Game.prototype.toggleSound = function() {
+        /*
+              $(".sound").click(function(e) {
+                e.preventDefault();
+                var song = $('audio')[0]
+                if (song.paused){
+                    song.play();
+                    document.getElementById("Sound").src = "images/sound.png";
+                    this.mute = true;
+                }else{
+                    song.pause();
+                    document.getElementById("Sound").src = "images/nosound.png";
+                    this.mute = false;
+                }
+                });
+                */
         if (!this.mute) {
             this.mute = true;
             $('.nosound').show();
@@ -143,7 +136,6 @@ window.Game = (function() {
             vid.play();
             vid.volume = 0.1;
         }
-
     };
 
     /**
@@ -151,11 +143,14 @@ window.Game = (function() {
      */
     Game.prototype.gameover = function() {
         this.isPlaying = false;
-        // this.hasStarted = false;
         $('.Ground').css('animation-play-state', 'paused', '-webkit-animation-play-state', 'paused');
-        // Should be refactored into a Scoreboard class.
+
+        if (this.score > this.highscore) { this.highscore = this.score; }
         var that = this;
         var scoreboardEl = this.el.find('.Scoreboard');
+        $('.Score').html(this.score);
+        $('.High-score').html(this.highscore);
+
         scoreboardEl
             .addClass('is-visible')
             .find('.Start-replay')

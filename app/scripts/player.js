@@ -122,6 +122,7 @@ window.Player = (function() {
                     if (this.scorePipe !== this.game.pipe.pipeArr[i].name) {
                         this.game.score += 1;
                         $('.Game-Score').html(this.game.score);
+                        // $('.Game-Score').css("background-image", "url(images/font_big_0.png)");
                         this.scorePipe = this.game.pipe.pipeArr[i].name;
                     }
                 }
@@ -141,6 +142,7 @@ window.Player = (function() {
                 die.currentTime = 0;
                 die.play();
             }
+            $('.Game-Score').hide();
             return this.game.gameover();
         }
         // this.game.pipes.checkCollision();

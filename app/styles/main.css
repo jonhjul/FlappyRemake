@@ -46,7 +46,31 @@
 .Scoreboard.is-visible {
     -webkit-transform: none;
 }
-
+.Score {
+  font-family: impact;
+  font-size: 5.5em;
+  position: inherit;
+  margin-left: 0.5em;
+  text-align: inherit;
+  margin-top: 2.5em;
+}
+.High-score {
+  font-family: impact;
+  font-size: 5.5em;
+  position: inherit;
+  margin-left: 0.5em;
+  text-align: inherit;
+  margin-top: 3.7em;
+}
+.Game-Score {
+  position: absolute;
+  z-index: 100;
+  font-size: 4em;
+  margin-left: 49%;
+  top: 1em;
+  color: white;
+  font-family: impact;
+}
 /*
 .Scoreboard-restartText {
     font-family: 'Comic Sans MS', serif;
@@ -161,7 +185,7 @@ body {
     transform: none;
 }
 .Scoreboard {
-    color: red;
+    color: white;
     position: absolute;
     left: 50%;
     top: 0em;
@@ -181,7 +205,7 @@ body {
     transition: transform 0.5s;
 }
 .Start {
-    color: red;
+    color: white;
     position: absolute;
     left: 50%;
     top: 0em;
