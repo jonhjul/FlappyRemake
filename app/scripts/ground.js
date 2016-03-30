@@ -1,11 +1,11 @@
-window.Floor = (function() {
+window.Ground = (function() {
     'use strict';
 
     // All these constants are in em's, multiply by 10 pixels
     // for 1024x576px canvas.
     var SPEED = 10; // * 10 pixels per second
 
-    var Floor = function(el, game, initX, initY, height, width) {
+    var Ground = function(el, game, initX, initY, height, width) {
         this.el = el;
         this.game = game;
         this.pos = {
@@ -16,7 +16,7 @@ window.Floor = (function() {
         this.width = width;
     };
 
-    Floor.prototype.onFrame = function(delta) {
+    Ground.prototype.onFrame = function(delta) {
         if (this.game.hasStarted) {
             this.pos.x -= delta * SPEED;
             if (this.pos.x < 0 - this.width + 0.1) {
@@ -28,6 +28,6 @@ window.Floor = (function() {
         this.el.css('transform', 'translateZ(0) translate(' + this.pos.x + 'em, ' + this.pos.y + 'em)');
     };
 
-    return Floor;
+    return Ground;
 
 })();

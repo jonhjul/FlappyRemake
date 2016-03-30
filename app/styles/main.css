@@ -159,15 +159,24 @@ body {
     position: absolute;
 }
 
-/*
-.Floor {
+
+.Ground {
     position: absolute;
     background-image: url('../images/ground.png');
     background-size: auto;
     width: 106em;
     height: 3em;
 }
-*/
+.Clouds {
+	position: absolute;
+	background-image: url('../images/cloud.png');
+  background-repeat: repeat-x;
+  background-size: 14em;
+	width: 200em;
+	height: 14em;
+}
+
+
 
 @media -sass-debug-info {
     filename {

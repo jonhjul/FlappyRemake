@@ -9,8 +9,9 @@ window.Game = (function() {
     var Game = function(el) {
         this.el = el;
         this.player = new window.Player(this.el.find('.Player'), this);
-        // this.floor = new window.Floor(this.el.find('.Floor'), this, 0, this.WORLD_HEIGHT - 3, 3, 4);
+        this.ground = new window.Ground(this.el.find('.Ground'), this, 0, this.WORLD_HEIGHT - 3, 3, 4);
         this.pipe = new window.Pipe(el, this);
+        this.clouds = new window.Clouds(this.el.find('.Clouds'), this, 0, 5, 20);
         // this.pipes = new window.Pipes(this.el.find('.Pipes'), this);
         // this.frameCount = 0;
         // this.highscore = 0;
@@ -21,6 +22,7 @@ window.Game = (function() {
         // this.tube.push(new window.Tube(this.el.find('.Tube2'), this.WORLD_WIDTH + this.tubeDist * 3, 0, 15, this.tubeWidth, this, true));
         this.isPlaying = false;
         this.hasStarted = false;
+        this.toggleSound();
 
         var fontSize = Math.min(
             window.innerWidth / 102.4,
@@ -53,7 +55,8 @@ window.Game = (function() {
         // Update game entities.
         this.pipe.onFrame(delta);
         this.player.onFrame(delta);
-        // this.floor.onFrame(delta);
+        this.ground.onFrame(delta);
+        this.clouds.onFrame(delta);
         /*
         if (this.frameCount === 100) {
             this.pipes.addPipe();
