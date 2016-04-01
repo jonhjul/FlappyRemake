@@ -16,15 +16,17 @@ window.Game = (function() {
         this.isPlaying = false;
         this.score = -1;
         this.highscore = 0;
-        this.mute = false;
+        // this.mute = false;
         // this.tube = [];
         // this.tube.push(new window.Tube(this.el.find('.Tube1'), this.WORLD_WIDTH + this.tubeDist * 3, 35, 30, this.tubeWidth, this, false));
         // this.tube.push(new window.Tube(this.el.find('.Tube2'), this.WORLD_WIDTH + this.tubeDist * 3, 0, 15, this.tubeWidth, this, true));
         // this.isPlaying = false;
         // this.hasStarted = false;
-        this.toggleSound();
-        this.toggleSound();
-
+        //this.toggleSound();
+        //this.toggleSound();
+        var vid = document.getElementById('theme_music');
+        vid.play();
+        vid.volume = 0.1;
         var fontSize = Math.min(
             window.innerWidth / 102.4,
             window.innerHeight / 57.6
@@ -46,8 +48,6 @@ window.Game = (function() {
         if (!this.isPlaying) {
             return;
         }
-
-
         // Calculate how long since last frame in seconds.
         var now = +new Date() / 1000,
             delta = now - this.lastFrame;
@@ -145,7 +145,9 @@ window.Game = (function() {
         this.isPlaying = false;
         $('.Ground').css('animation-play-state', 'paused', '-webkit-animation-play-state', 'paused');
 
-        if (this.score > this.highscore) { this.highscore = this.score; }
+        if (this.score > this.highscore) {
+            this.highscore = this.score;
+        }
         var that = this;
         var scoreboardEl = this.el.find('.Scoreboard');
         $('.Score').html(this.score);

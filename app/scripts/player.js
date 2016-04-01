@@ -59,7 +59,7 @@ window.Player = (function() {
             SPEED = this.JUMP_SPEED;
             var wing = document.getElementById('sfx_wing');
             wing.volume = 0.1;
-            if (!this.mute) {
+            if (!this.game.mute) {
                 wing.pause();
                 wing.currentTime = 0;
                 wing.play();
@@ -129,13 +129,13 @@ window.Player = (function() {
                 SPEED += 0.5;
             } else {
                 // Hérna byrja ég að fara niður með nefið beint í jörðina
-                console.log('ELSE SPEED         ' + SPEED);
+                // console.log('ELSE SPEED         ' + SPEED);
                 $('.Player--bird').css('transform', 'translateZ(0) rotate(80deg)');
                 if (Math.floor(this.degs) < 70) {
                     this.degs += delta * SPEED * 0.4;
                 } else {
                     this.degs = 10;
-                    console.log(this.degs);
+                    // console.log(this.degs);
                 }
                 SPEED = (this.JUMP_SPEED);
             }
@@ -164,7 +164,7 @@ window.Player = (function() {
             if (-pipePosX >= playerX + WIDTH && (-pipePosX - WIDTH * 2) <= playerX + WIDTH) {
                 if (lowerPipePosY < playerY + HEIGHT || topPipePosY > playerY) {
                     $('.Game-Score').hide();
-                    if (!this.mute) {
+                    if (!this.game.mute) {
                         hit.pause();
                         hit.currentTime = 0;
                         hit.play();
@@ -176,7 +176,7 @@ window.Player = (function() {
                         $('.Game-Score').html(this.game.score);
                         var point = document.getElementById('sfx_point');
                         point.volume = 0.1;
-                        if (!this.mute) {
+                        if (!this.game.mute) {
                             point.pause();
                             point.currentTime = 0;
                             point.play();
@@ -190,13 +190,14 @@ window.Player = (function() {
     };
 
     Player.prototype.checkCollisionWithBounds = function() {
+
         if (this.pos.x < 0 ||
             this.pos.x + WIDTH > this.game.WORLD_WIDTH ||
             this.pos.y < 0 ||
             this.pos.y + HEIGHT > this.game.WORLD_HEIGHT - 3) {
             var die = document.getElementById('sfx_die');
             die.volume = 0.5;
-            if (!this.mute) {
+            if (!this.game.mute) {
                 die.pause();
                 die.currentTime = 0;
                 die.play();
