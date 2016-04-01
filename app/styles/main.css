@@ -12,19 +12,26 @@
     top: -1.5em;
     height: 7.5em;
     width: 7.5em;
+    -webkit-transition: 0.2s ease-in-out;
+    -moz-transition: 0.2 ease-in-out;
+    -webkit-transform-origin: 100% 0;
+    transform-origin: 50% 50%;
+    -webkit-transform: translateZ(0);
 }
 .Player--wings {
     /* Positioned from top left of parent.*/
     position: absolute;
-    left: -0.5em;
-    top: 3em;
+    left: -0.7em;
+    top: -0.1em;
     height: 3em;
     width: 3em;
-    transform-origin: top left;
+    transform-origin: 50% 50%;
     animation: 0.4s flap alternate infinite;
+
 }
 @keyframes flap {
     from {
+
         transform: rotateX(50deg);
     }
     to {
@@ -47,30 +54,31 @@
     -webkit-transform: none;
 }
 .Score {
-  font-family: impact;
-  font-size: 5.5em;
-  position: inherit;
-  margin-left: 0.5em;
-  text-align: inherit;
-  margin-top: 2.5em;
+    font-family: impact;
+    font-size: 5.5em;
+    position: inherit;
+    margin-left: 0.5em;
+    text-align: inherit;
+    margin-top: 2.5em;
 }
 .High-score {
-  font-family: impact;
-  font-size: 5.5em;
-  position: inherit;
-  margin-left: 0.5em;
-  text-align: inherit;
-  margin-top: 3.7em;
+    font-family: impact;
+    font-size: 5.5em;
+    position: inherit;
+    margin-left: 0.5em;
+    text-align: inherit;
+    margin-top: 3.7em;
 }
 .Game-Score {
-  position: absolute;
-  z-index: 100;
-  font-size: 4em;
-  margin-left: 49%;
-  top: 1em;
-  color: white;
-  font-family: impact;
+    position: absolute;
+    z-index: 100;
+    font-size: 4em;
+    margin-left: 49%;
+    top: 1em;
+    color: white;
+    font-family: impact;
 }
+
 /*
 .Scoreboard-restartText {
     font-family: 'Comic Sans MS', serif;

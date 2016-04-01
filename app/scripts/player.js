@@ -44,7 +44,7 @@ window.Player = (function() {
         $('.Game-Score').html('0');
     };
 
-    Player.prototype.onFrame = function() {
+    Player.prototype.onFrame = function(delta) {
         if (this.game.hasStarted) {
             this.pos.y += GRAVITY;
         } else {
@@ -53,6 +53,8 @@ window.Player = (function() {
 
         this.jumped = Controls.didJump();
         if (this.jumped) {
+            //  Inntak controlsins að hoppa! Hvort það sé að þú sért að hoppa upp einusinni eða oftar
+            // console.log('Hoppar einusinni eða hoppar oft!');
             this.game.hasStarted = true;
             SPEED = this.JUMP_SPEED;
             var wing = document.getElementById('sfx_wing');
@@ -65,10 +67,29 @@ window.Player = (function() {
         }
 
         if (this.jumped && !this.isJumping) {
+            // Fyrsta stökk upp
             // console.log('Er að hoppa upp hér!');
+            // For bird
+            if (this.pos.y < -1) {} else {
+                this.pos.y -= delta * SPEED + 0.6;
+                this.velocity = 0;
+                $('.Player--bird').css('transform', 'translateZ(0) rotate(-60deg)');
+                this.degs = 65;
+            }
+            // For wings
+            /*
+            if (this.pos.x < -1) {} else {
+                this.pos.x -= delta * SPEED + 0.6;
+                this.velocity = 0;
+                $('.Player--wings').css('transform', 'translateZ(0) rotate(35deg)');
+                this.degs = -65;
+            }
+            */
             this.game.isPlaying = true;
             this.isJumping = true;
         } else if (this.jumped && this.isJumping) {
+            // Ef þú ýtir á takkann oft, þá ertu hérna
+            // console.log('Hoppa oft!');
             SPEED = (this.JUMP_SPEED);
             return;
         }
@@ -76,15 +97,46 @@ window.Player = (function() {
         if (this.isJumping) {
             this.pos.y -= SPEED;
             if ((SPEED -= 0.15) < 0) {
+                // Sá tímapunktur sem ég fer frá því að fara upp og byrja beinast niður
                 // console.log('Er að detta niður hér!');
+                // For bird
+                this.pos.y += delta * SPEED + this.velocity;
+                this.velocity += SPEED * 0.0005;
+                $('.Player--bird').css('transform', 'translateZ(0) rotate(0)');
+                if (Math.floor(this.degs) < 70) {
+                    this.degs += delta * SPEED * 8;
+                } else {
+                    this.degs = 70;
+                }
+                /*
+                // For wings
+                this.pos.x+= delta * SPEED + this.velocity;
+                this.velocity += SPEED * 0.0005;
+                $('flap').css('transform', 'translateZ(0) rotateX(0)');
+                if (Math.floor(this.degs) < 70) {
+                    this.degs += delta * SPEED * 8;
+                } else {
+                    this.degs = 70;
+                }
+                */
                 this.isJumping = false;
             }
             // Update UI
             this.el.css('transform', 'translateZ(0) translate(' + this.pos.x + 'em, ' + this.pos.y + 'em)');
         } else {
             if (SPEED < 2) {
+                // Hérna byrja ég að snúast niður
                 SPEED += 0.5;
             } else {
+                // Hérna byrja ég að fara niður með nefið beint í jörðina
+                console.log('ELSE SPEED         ' + SPEED);
+                $('.Player--bird').css('transform', 'translateZ(0) rotate(80deg)');
+                if (Math.floor(this.degs) < 70) {
+                    this.degs += delta * SPEED * 0.4;
+                } else {
+                    this.degs = 10;
+                    console.log(this.degs);
+                }
                 SPEED = (this.JUMP_SPEED);
             }
             if (this.game.hasStarted) {
@@ -122,6 +174,13 @@ window.Player = (function() {
                     if (this.scorePipe !== this.game.pipe.pipeArr[i].name) {
                         this.game.score += 1;
                         $('.Game-Score').html(this.game.score);
+                        var point = document.getElementById('sfx_point');
+                        point.volume = 0.1;
+                        if (!this.mute) {
+                            point.pause();
+                            point.currentTime = 0;
+                            point.play();
+                        }
                         // $('.Game-Score').css("background-image", "url(images/font_big_0.png)");
                         this.scorePipe = this.game.pipe.pipeArr[i].name;
                     }
