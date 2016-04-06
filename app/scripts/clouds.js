@@ -23,7 +23,7 @@ window.Clouds = (function() {
     Clouds.prototype.onFrame = function(delta) {
 
         this.pos.x -= delta * SPEED;
-        if (this.pos.x < 0 - this.width+6) {
+        if (this.pos.x < 0 - this.width) {
             this.pos.x = 0;
         }
         // Update UI

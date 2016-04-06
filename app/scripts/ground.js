@@ -3,7 +3,7 @@ window.Ground = (function() {
 
     // All these constants are in em's, multiply by 10 pixels
     // for 1024x576px canvas.
-    var SPEED = 10; // * 10 pixels per second
+    var SPEED = 30; // * 10 pixels per second
 
     var Ground = function(el, game, initX, initY, height, width) {
         this.el = el;

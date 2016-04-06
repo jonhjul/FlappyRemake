@@ -106,67 +106,8 @@ body {
     margin-left: -51.2em;
     margin-top: -28.8em;
     overflow: hidden;
-/*    background-image: url('../images/bg.png');*/
-    background-position: 50% 100%;
-    background-repeat: no-repeat;
+    background-color: rgb(87, 192, 202);
     background-size: cover;
-}
-/*
-.Background{
-  background: blue;
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  width: 102.4em;
-  height: 57.6em;
-  margin-left: -51.2em;
-  margin-top: -28.8em;
-  overflow: hidden;
-  background-repeat: repeat-x;
-  background-position: 50% 100%;
-}*/
-.BackgroundTrees{
-  position: absolute;
-  top: 86%;
-  left: 0%;
-  background-image:url('../images/bgTrees3.png');
-  background-repeat: repeat-x;;
-  background-size: 6em;
-  width: 120em;
-  height: 14em;
-/*  transform: translateZ(0);*/
-}
-
-.BackgroundCity{
-  position: absolute;
-  left: 0%;
-  top: 76%;
-  background-image: url('../images/bgCity2.png');
-  background-repeat: repeat-x;;
-  background-size: 30em;
-  width: 150em;
-  height: 15em;
-/*  transform: scale(2);*/
-}
-
-.BackgroundClouds{
-  position: absolute;
-  left: 0%;
-  top: 72%;
-  width: 150%;
-  height: 10em;
-  background-image: url('../images/bgCityClouds2.png');
-  background-repeat: repeat-x;
-  background-size: 20em;
-}
-
-@keyframes parallax_bg {
-  0% {
-    background-position: -2400px 100%, -2000px 100%, -1800px 100%, -1600px 100%, -1200px 100%;
-  }
-  100% {
-    background-position: 0 100%, 0 100%, 0 100%, 0 100%, 0 100%;
-  }
 }
 
 .Game {
@@ -185,31 +126,44 @@ body {
 .Ground {
     position: absolute;
     background-image: url('../images/ground.png');
-    background-size: auto;
-    width: 106em;
-    height: 3em;
+    background-size: 40em;
+    background-repeat: repeat-x;
+    width: 150em;
+    height: 10em;
 }
-/*
-@-webkit-keyframes animateGround {
-    from {
-        -webkit-transform: translate3d(0, 0, 0);
-    }
-    to {
-        -webkit-transform: translate3d(-400px, 0, 0);
-    }
-}*/
-/*
-@keyframes animateGround {
-    from {
-        -webkit-transform: translate3d(0, 0, 0);
-        transform: translate3d(0, 0, 0);
-    }
-    to {
-        -webkit-transform: translate3d(-400px, 0, 0);
-        transform: translate3d(-400px, 0, 0);
-    }
-}*/
 
+.BackgroundTrees{
+  position: absolute;
+  top: 86%;
+  left: 0%;
+  background-image:url('../images/bgTrees3.png');
+  background-repeat: repeat-x;
+  background-size: 6em;
+  width: 120em;
+  height: 14em;
+}
+
+.BackgroundCity{
+  position: absolute;
+  left: 0%;
+  top: 76%;
+  background-image: url('../images/bgCity2.png');
+  background-repeat: repeat-x;;
+  background-size: 30em;
+  width: 150em;
+  height: 15em;
+}
+
+.BackgroundClouds{
+  position: absolute;
+  left: 0%;
+  top: 72%;
+  width: 150%;
+  height: 10em;
+  background-image: url('../images/bgCityClouds2.png');
+  background-repeat: repeat-x;
+  background-size: 20em;
+}
 .Clouds {
     position: absolute;
     background-image: url('../images/cloud.png');
