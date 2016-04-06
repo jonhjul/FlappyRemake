@@ -130,34 +130,34 @@ body {
   top: 86%;
   left: 0%;
   background-image:url('../images/bgTrees3.png');
-  background-repeat: repeat-x;
-  width: 110%;
-  height: 10em;
+  background-repeat: repeat-x;;
+  background-size: 6em;
+  width: 120em;
+  height: 14em;
 /*  transform: translateZ(0);*/
 }
 
 .BackgroundCity{
   position: absolute;
   left: 0%;
-  top: 82%;
-
+  top: 76%;
   background-image: url('../images/bgCity2.png');
-  background-repeat: repeat-x;
-  width: 150%;
+  background-repeat: repeat-x;;
+  background-size: 30em;
+  width: 150em;
   height: 15em;
 /*  transform: scale(2);*/
 }
 
 .BackgroundClouds{
   position: absolute;
-  left: 50%;
-  top: 75%;
+  left: 0%;
+  top: 72%;
   width: 150%;
   height: 10em;
-  margin-left: -51.2em;
   background-image: url('../images/bgCityClouds2.png');
   background-repeat: repeat-x;
-/*  transform: translateZ(-2em) scale(3);*/
+  background-size: 20em;
 }
 
 @keyframes parallax_bg {
@@ -215,7 +215,7 @@ body {
     background-image: url('../images/cloud.png');
     background-repeat: repeat-x;
     background-size: 14em;
-    width: 200em;
+    width: 130em;
     height: 14em;
 }
 .Pipedown1, .Pipedown2, .Pipedown3 {

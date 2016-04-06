@@ -23,7 +23,7 @@ window.Trees = (function() {
     Trees.prototype.onFrame = function(delta) {
 
         this.pos.x -= delta * SPEED;
-        if (this.pos.x < 0 - this.width*0.04) {
+        if (this.pos.x < 0 - this.width) {
             this.pos.x = 0;
         }
         // Update UI
