@@ -106,11 +106,69 @@ body {
     margin-left: -51.2em;
     margin-top: -28.8em;
     overflow: hidden;
-    background-image: url('../images/bg.png');
+/*    background-image: url('../images/bg.png');*/
     background-position: 50% 100%;
     background-repeat: no-repeat;
     background-size: cover;
 }
+/*
+.Background{
+  background: blue;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 102.4em;
+  height: 57.6em;
+  margin-left: -51.2em;
+  margin-top: -28.8em;
+  overflow: hidden;
+  background-repeat: repeat-x;
+  background-position: 50% 100%;
+}*/
+.BackgroundTrees{
+  position: absolute;
+  top: 86%;
+  left: 0%;
+  background-image:url('../images/bgTrees3.png');
+  background-repeat: repeat-x;
+  width: 110%;
+  height: 10em;
+/*  transform: translateZ(0);*/
+}
+
+.BackgroundCity{
+  position: absolute;
+  left: 0%;
+  top: 82%;
+
+  background-image: url('../images/bgCity2.png');
+  background-repeat: repeat-x;
+  width: 150%;
+  height: 15em;
+/*  transform: scale(2);*/
+}
+
+.BackgroundClouds{
+  position: absolute;
+  left: 50%;
+  top: 75%;
+  width: 150%;
+  height: 10em;
+  margin-left: -51.2em;
+  background-image: url('../images/bgCityClouds2.png');
+  background-repeat: repeat-x;
+/*  transform: translateZ(-2em) scale(3);*/
+}
+
+@keyframes parallax_bg {
+  0% {
+    background-position: -2400px 100%, -2000px 100%, -1800px 100%, -1600px 100%, -1200px 100%;
+  }
+  100% {
+    background-position: 0 100%, 0 100%, 0 100%, 0 100%, 0 100%;
+  }
+}
+
 .Game {
     position: absolute;
     top: 50%;
@@ -131,6 +189,7 @@ body {
     width: 106em;
     height: 3em;
 }
+/*
 @-webkit-keyframes animateGround {
     from {
         -webkit-transform: translate3d(0, 0, 0);
@@ -138,7 +197,8 @@ body {
     to {
         -webkit-transform: translate3d(-400px, 0, 0);
     }
-}
+}*/
+/*
 @keyframes animateGround {
     from {
         -webkit-transform: translate3d(0, 0, 0);
@@ -148,7 +208,8 @@ body {
         -webkit-transform: translate3d(-400px, 0, 0);
         transform: translate3d(-400px, 0, 0);
     }
-}
+}*/
+
 .Clouds {
     position: absolute;
     background-image: url('../images/cloud.png');
@@ -288,4 +349,19 @@ body {
     margin-top: 27em;
     height: 7.5em;
     width: 15em;
+}
+.sound{
+  position: absolute;
+}
+.nosound{
+  position: absolute;
+}
+.noselect {
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none;   /* Chrome/Safari/Opera */
+  -khtml-user-select: none;    /* Konqueror */
+  -moz-user-select: none;      /* Firefox */
+  -ms-user-select: none;       /* IE/Edge */
+  user-select: none;           /* non-prefixed version, currently
+                                  not supported by any browser */
 }

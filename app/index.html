@@ -37,31 +37,34 @@
     <!--[if lt IE 10]> <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p> <![endif]-->
 
     <div class="GameCanvas">
+        <div class="BackgroundClouds"> </div>
+        <div class="BackgroundCity"> </div>
+        <div class="BackgroundTrees"> </div>
         <div class="City"></div>
         <div class="Clouds"></div>
         <div class="Player">
-            <img src="/images/bird.png" class="Player--bird"></img>
-            <img src="/images/birdwing.png" class="Player--wings"></img>
+            <img src="/images/bird2.png" class="Player--bird"></img>
+            <img src="/images/birdwing3.png" class="Player--wings"></img>
         </div>
-        <span class="Game-Score"></span>
+        <span class="Game-Score noselect"></span>
         <div class="Pipedown1 Pipe"></div>
         <div class="Pipeup1 Pipe"></div>
         <div class="Pipedown2 Pipe"></div>
         <div class="Pipeup2 Pipe"></div>
         <div class="Pipedown3 Pipe"></div>
         <div class="Pipeup3 Pipe"></div>
-        <div class="Scoreboard">
-            <span class="Score"></span>
-            <h2 class="High-score-text"></h2>
-            <span class="High-score"></span>
+        <div class="Scoreboard noselect">
+            <span class="Score noselect"></span>
+            <h2 class="High-score-text noselect"></h2>
+            <span class="High-score noselect"></span>
             <span class="Scoreboard-restartText"><img class="Start-replay" src="images/replay.png"></img></span>
         </div>
-        <div class="Start">
-            <span class="Start-restart"><img class="Start-intro" src="images/intro.png"></img></span>
+        <div class="Start noselect">
+            <span class="Start-restart noselect"><img class="Start-intro noselect" src="images/intro.png"></img></span>
         </div>
         <div class="Ground"></div>
-        <div class="sound"><img width="50px" onclick="window.Game.prototype.toggleSound()" src="images/sound.png" alt="" /></div>
-        <div class="nosound" hidden><img width="50px" onclick="window.Game.prototype.toggleSound()" src="images/nosound.png" alt="" /></div>
+        <div class="sound noselect"><img width="50px" onclick="window.Game.prototype.toggleSound()" src="images/sound.png" alt="" /></div>
+        <div class="nosound noselect" hidden><img width="50px" onclick="window.Game.prototype.toggleSound()" src="images/nosound.png" alt="" /></div>
     </div>
     <div class="Controls">
         <button class="zoomIn">+</button>
@@ -82,8 +85,12 @@
     <script src="scripts/player.js"></script>
     <script src="scripts/utils.js"></script>
     <script src="scripts/ground.js"></script>
+    <script src="scripts/bgTrees.js"></script>
+    <script src="scripts/bgCity.js"></script>
+    <script src="scripts/bgClouds.js"></script>
     <script src="scripts/clouds.js"></script>
     <script src="scripts/pipe.js"></script>
+
     <!-- endbuild -->
     </body>
 

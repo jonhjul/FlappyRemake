@@ -12,6 +12,9 @@ window.Game = (function() {
         this.ground = new window.Ground(this.el.find('.Ground'), this, 0, this.WORLD_HEIGHT - 3, 3, 4);
         this.pipe = new window.Pipe(el, this);
         this.clouds = new window.Clouds(this.el.find('.Clouds'), this, 0, 5, 20);
+        this.Trees = new window.Trees(this.el.find('.BackgroundTrees'), this, 0, 0, this.WORLD_WIDTH*1.4);
+        this.City = new window.City(this.el.find('.BackgroundCity'), this, 0, 0, this.WORLD_WIDTH*1.4);
+        this.bgClouds = new window.bgClouds(this.el.find('.BackgroundClouds'), this, 0, 0, this.WORLD_WIDTH*1.4);
         // this.pipes = new window.Pipes(this.el.find('.Pipes'), this);
         this.isPlaying = false;
         this.score = -1;
@@ -36,6 +39,7 @@ window.Game = (function() {
 
         // Cache a bound onFrame since we need it each frame.
         this.onFrame = this.onFrame.bind(this);
+        this.toggleSound();
     };
 
     /**
@@ -58,6 +62,9 @@ window.Game = (function() {
         this.player.onFrame(delta);
         this.ground.onFrame(delta);
         this.clouds.onFrame(delta);
+        this.Trees.onFrame(delta);
+        this.City.onFrame(delta);
+        this.bgClouds.onFrame(delta);
         // Request next frame.
         window.requestAnimationFrame(this.onFrame);
     };

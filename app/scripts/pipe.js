@@ -1,7 +1,7 @@
 window.Pipe = (function() {
     'use strict';
 
-    var SPEED = 20;
+    var SPEED = 30;
     var GAP = 15;
     var divide = 2;
     var multiPipe2 = 1;

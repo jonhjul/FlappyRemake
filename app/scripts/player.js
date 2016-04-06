@@ -10,7 +10,7 @@ window.Player = (function() {
     var HEIGHT = 5;
     var INITIAL_POSITION_X = 30;
     var INITIAL_POSITION_Y = 25;
-    var GRAVITY = 0.5;
+    var GRAVITY = 0;
 
     var Player = function(el, game) {
         this.el = el;
@@ -151,7 +151,7 @@ window.Player = (function() {
     };
 
     Player.prototype.checkCollisionWithPipes = function() {
-        var playerX = this.pos.x + 23;
+    /*    var playerX = this.pos.x + 23;
         var playerY = Math.floor(this.pos.y);
         var hit = document.getElementById('sfx_hit');
         hit.volume = 0.5;
@@ -186,7 +186,7 @@ window.Player = (function() {
                     }
                 }
             }
-        }
+        }*/
     };
 
     Player.prototype.checkCollisionWithBounds = function() {
