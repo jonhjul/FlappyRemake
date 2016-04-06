@@ -124,6 +124,8 @@ body {
     position: absolute;
 }
 .Ground {
+    top: 90%;
+    left: 0%;
     position: absolute;
     background-image: url('../images/ground.png');
     background-size: 40em;

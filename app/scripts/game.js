@@ -9,7 +9,7 @@ window.Game = (function() {
     var Game = function(el) {
         this.el = el;
         this.player = new window.Player(this.el.find('.Player'), this);
-        this.ground = new window.Ground(this.el.find('.Ground'), this, 0, this.WORLD_HEIGHT - 3, 3, 40);
+        this.ground = new window.Ground(this.el.find('.Ground'), this, 0, 0, 3, 40);
         this.pipe = new window.Pipe(el, this);
         this.clouds = new window.Clouds(this.el.find('.Clouds'), this, 0, 5, 13.9);
         this.Trees = new window.Trees(this.el.find('.BackgroundTrees'), this, 0, 0, 6);
@@ -30,17 +30,34 @@ window.Game = (function() {
         var vid = document.getElementById('theme_music');
         vid.play();
         vid.volume = 0.1;
-        var fontSize = Math.min(
-            window.innerWidth / 102.4,
-            window.innerHeight / 57.6
-        );
-        el.css('fontSize', fontSize + 'px');
-
+        this.fitSize();
 
         // Cache a bound onFrame since we need it each frame.
         this.onFrame = this.onFrame.bind(this);
         this.toggleSound();
     };
+
+    Game.prototype.fitSize = function() {
+        this.fontSize = Math.min(
+            window.innerWidth / 102.4,
+            window.innerHeight / 57.6
+        );
+        var game = $('.GameCanvas');
+        game.css('fontSize', this.fontSize + 'px');
+    };
+    Game.prototype.decSize = function() {
+        var game = $('.GameCanvas');
+        console.log("dec");
+        this.fontSize -= 1;
+        game.css('fontSize', this.fontSize + 'px');
+    };
+    Game.prototype.incSize = function() {
+        var game = $('.GameCanvas');
+        console.log("inc");
+        this.fontSize += 1;
+        game.css('fontSize', this.fontSize + 'px');
+    };
+
 
     /**
      * Runs every frame. Calculates a delta and allows each game
@@ -74,7 +91,7 @@ window.Game = (function() {
      */
     Game.prototype.start = function() {
         if (this.score === -1) {
-            $(".Ground, .Pipedown1, .Pipedown2, .Pipedown3, .Pipeup1, .Pipeup2, .Pipeup3, .Player,.Player--bird,.Player--wing").hide();
+            $(" .Pipedown1, .Pipedown2, .Pipedown3, .Pipeup1, .Pipeup2, .Pipeup3, .Player,.Player--bird,.Player--wing").hide();
             var that = this;
             var StartEl = this.el.find('.Start');
             StartEl

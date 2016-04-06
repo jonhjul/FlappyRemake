@@ -67,9 +67,9 @@
         <div class="nosound noselect" hidden><img width="50px" onclick="window.Game.prototype.toggleSound()" src="images/nosound.png" alt="" /></div>
     </div>
     <div class="Controls">
-        <button class="zoomIn">+</button>
-        <button class="zoomOut">-</button>
-        <button class="zoomFit">Fit</button>
+        <button class="zoomIn"  onclick="window.Game.prototype.incSize()">+</button>
+        <button class="zoomOut" onclick="window.Game.prototype.decSize()">-</button>
+        <button class="zoomFit" onclick="window.Game.prototype.fitSize()">Fit</button>
     </div>
 
     <!-- build:js scripts/vendor.js -->
