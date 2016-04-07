@@ -69,7 +69,7 @@ window.Pipe = (function() {
                 this.pipeArr[i].top.pos.x = 40;
                 this.pipeArr[i].bottom.pos.x = 40;
 
-                var pipeHeight = getRandomInt(7.5, 35);
+                var pipeHeight = getRandomInt(10, 35);
 
                 var upperHeight = this.game.WORLD_HEIGHT - (pipeHeight + GAP);
                 this.pipeArr[i].top.pipe.css('height', pipeHeight + 'em');

@@ -13,8 +13,9 @@
     top: -1em;
     height: 7.5em;
     width: 7.5em;
-    background-image: url(/images/bird2.png);
+    background-image: url(/images/bird3.png);
     background-repeat: no-repeat;
+    background-size: cover;
     -webkit-transition: 0.2s ease-in-out;
     -moz-transition: 0.2 ease-in-out;
     -webkit-transform-origin: 100% 0;

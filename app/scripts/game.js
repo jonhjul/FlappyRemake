@@ -12,18 +12,19 @@ window.Game = (function() {
         this.ground = new window.Ground(this.el.find('.Ground'), this, 0, 0, 3, 40);
         this.pipe = new window.Pipe(el, this);
         this.clouds = new window.Clouds(this.el.find('.Clouds'), this, 0, 5, 13.9);
-        this.Trees = new window.Trees(this.el.find('.BackgroundTrees'), this, 0, 0, 6);
+        this.Trees = new window.Trees(this.el.find('.BackgroundTrees'), this, 0, 0, 5.9);
         this.City = new window.City(this.el.find('.BackgroundCity'), this, 0, 0, 35);
-        this.bgClouds = new window.bgClouds(this.el.find('.BackgroundClouds'), this, 0, 0, 40);
+        this.bgClouds = new window.bgClouds(this.el.find('.BackgroundClouds'), this, 0, 0, 39.9);
         // this.pipes = new window.Pipes(this.el.find('.Pipes'), this);
         this.isPlaying = false;
         this.score = -1;
         this.highscore = 0;
-        this.fontSize = Math.min(
+      /*  this.fontSize = Math.min(
             window.innerWidth / 102.4,
             window.innerHeight / 57.6
         );
-        // this.mute = false;
+        console.log(this.fontSize);*/
+        this.mute = false;
         // this.tube = [];
         // this.tube.push(new window.Tube(this.el.find('.Tube1'), this.WORLD_WIDTH + this.tubeDist * 3, 35, 30, this.tubeWidth, this, false));
         // this.tube.push(new window.Tube(this.el.find('.Tube2'), this.WORLD_WIDTH + this.tubeDist * 3, 0, 15, this.tubeWidth, this, true));
@@ -35,6 +36,7 @@ window.Game = (function() {
         vid.play();
         vid.volume = 0.1;
         this.fitSize();
+      //  console.log(this);
 
         // Cache a bound onFrame since we need it each frame.
         this.onFrame = this.onFrame.bind(this);
@@ -110,21 +112,21 @@ window.Game = (function() {
 
 
     Game.prototype.toggleSound = function() {
+        console.log("Toggle Sound");
         /*
-              $(".sound").click(function(e) {
-                e.preventDefault();
-                var song = $('audio')[0]
-                if (song.paused){
-                    song.play();
-                    document.getElementById("Sound").src = "images/sound.png";
-                    this.mute = true;
-                }else{
-                    song.pause();
-                    document.getElementById("Sound").src = "images/nosound.png";
-                    this.mute = false;
-                }
-                });
-                */
+                $(".sound").click(function(e) {
+                    e.preventDefault();
+                    var song = $('audio')[0];
+                    if (song.paused) {
+                        song.play();
+                        document.getElementById("Sound").src = "images/sound.png";
+                        this.mute = true;
+                    } else {
+                        song.pause();
+                        document.getElementById("Sound").src = "images/nosound.png";
+                        this.mute = false;
+                    }
+                });*/
         if (!this.mute) {
             this.mute = true;
             $('.nosound').show();
@@ -169,7 +171,7 @@ window.Game = (function() {
             });
     };
 
-    Game.prototype.updateFont = function(){
+    Game.prototype.updateFont = function() {
         var game = $('.GameCanvas');
         game.css('fontSize', this.fontSize + 'px');
     };
@@ -181,11 +183,19 @@ window.Game = (function() {
         this.updateFont();
     };
     Game.prototype.decSize = function() {
-        this.fontSize -= 1;
+        if (this.fontSize === undefined) {
+            this.fitSize();
+        }
+        this.fontSize -= 1.0;
+        console.log(this.fontSize);
         this.updateFont();
     };
     Game.prototype.incSize = function() {
-        this.fontSize += 1;
+        if (this.fontSize === undefined) {
+            this.fitSize();
+        }
+        this.fontSize += 1.0;
+        console.log(this.fontSize);
         this.updateFont();
     };
 

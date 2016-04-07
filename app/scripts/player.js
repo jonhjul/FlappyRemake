@@ -70,7 +70,7 @@ window.Player = (function() {
             // Fyrsta stökk upp
             // console.log('Er að hoppa upp hér!');
             // For bird
-            if (this.pos.y < -1) {} else {
+            if (this.pos.y < -1 && this.isPlaying) {} else {
                 this.pos.y -= delta * SPEED + 0.6;
                 this.velocity = 0;
                 $('.Player--bird').css('transform', 'translateZ(0) rotate(-45deg)');
