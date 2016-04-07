@@ -10,7 +10,7 @@ window.Player = (function() {
     var HEIGHT = 5;
     var INITIAL_POSITION_X = 30;
     var INITIAL_POSITION_Y = 25;
-    var GRAVITY = 0;
+    var GRAVITY = 0.5;
 
     var Player = function(el, game) {
         this.el = el;
@@ -73,7 +73,7 @@ window.Player = (function() {
             if (this.pos.y < -1) {} else {
                 this.pos.y -= delta * SPEED + 0.6;
                 this.velocity = 0;
-                $('.Player--bird').css('transform', 'translateZ(0) rotate(-60deg)');
+                $('.Player--bird').css('transform', 'translateZ(0) rotate(-45deg)');
                 this.degs = 65;
             }
             // For wings
@@ -103,8 +103,9 @@ window.Player = (function() {
                 this.pos.y += delta * SPEED + this.velocity;
                 this.velocity += SPEED * 0.0005;
                 $('.Player--bird').css('transform', 'translateZ(0) rotate(0)');
+                $('.Player--wing').css('transform', 'translateZ(0) rotate(0)');
                 if (Math.floor(this.degs) < 70) {
-                    this.degs += delta * SPEED * 8;
+                  //  this.degs += delta * SPEED * 8;
                 } else {
                     this.degs = 70;
                 }
@@ -130,11 +131,11 @@ window.Player = (function() {
             } else {
                 // Hérna byrja ég að fara niður með nefið beint í jörðina
                 // console.log('ELSE SPEED         ' + SPEED);
-                $('.Player--bird').css('transform', 'translateZ(0) rotate(80deg)');
+                $('.Player--bird').css('transform', 'translateZ(0) rotate(45deg)');
                 if (Math.floor(this.degs) < 70) {
-                    this.degs += delta * SPEED * 0.4;
+              //      this.degs += delta * SPEED * 0.4;
                 } else {
-                    this.degs = 10;
+                //    this.degs = 10;
                     // console.log(this.degs);
                 }
                 SPEED = (this.JUMP_SPEED);
@@ -151,7 +152,7 @@ window.Player = (function() {
     };
 
     Player.prototype.checkCollisionWithPipes = function() {
-    /*    var playerX = this.pos.x + 23;
+        var playerX = this.pos.x + 23;
         var playerY = Math.floor(this.pos.y);
         var hit = document.getElementById('sfx_hit');
         hit.volume = 0.5;
@@ -186,7 +187,7 @@ window.Player = (function() {
                     }
                 }
             }
-        }*/
+        }
     };
 
     Player.prototype.checkCollisionWithBounds = function() {
@@ -194,7 +195,7 @@ window.Player = (function() {
         if (this.pos.x < 0 ||
             this.pos.x + WIDTH > this.game.WORLD_WIDTH ||
             this.pos.y < 0 ||
-            this.pos.y + HEIGHT > this.game.WORLD_HEIGHT - 3) {
+            this.pos.y + HEIGHT > this.game.WORLD_HEIGHT -6.9) {
             var die = document.getElementById('sfx_die');
             die.volume = 0.5;
             if (!this.game.mute) {

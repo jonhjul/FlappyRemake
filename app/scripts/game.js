@@ -13,12 +13,16 @@ window.Game = (function() {
         this.pipe = new window.Pipe(el, this);
         this.clouds = new window.Clouds(this.el.find('.Clouds'), this, 0, 5, 13.9);
         this.Trees = new window.Trees(this.el.find('.BackgroundTrees'), this, 0, 0, 6);
-        this.City = new window.City(this.el.find('.BackgroundCity'), this, 0, 0, 30);
-        this.bgClouds = new window.bgClouds(this.el.find('.BackgroundClouds'), this, 0, 0, 20);
+        this.City = new window.City(this.el.find('.BackgroundCity'), this, 0, 0, 35);
+        this.bgClouds = new window.bgClouds(this.el.find('.BackgroundClouds'), this, 0, 0, 40);
         // this.pipes = new window.Pipes(this.el.find('.Pipes'), this);
         this.isPlaying = false;
         this.score = -1;
         this.highscore = 0;
+        this.fontSize = Math.min(
+            window.innerWidth / 102.4,
+            window.innerHeight / 57.6
+        );
         // this.mute = false;
         // this.tube = [];
         // this.tube.push(new window.Tube(this.el.find('.Tube1'), this.WORLD_WIDTH + this.tubeDist * 3, 35, 30, this.tubeWidth, this, false));
@@ -36,28 +40,6 @@ window.Game = (function() {
         this.onFrame = this.onFrame.bind(this);
         this.toggleSound();
     };
-
-    Game.prototype.fitSize = function() {
-        this.fontSize = Math.min(
-            window.innerWidth / 102.4,
-            window.innerHeight / 57.6
-        );
-        var game = $('.GameCanvas');
-        game.css('fontSize', this.fontSize + 'px');
-    };
-    Game.prototype.decSize = function() {
-        var game = $('.GameCanvas');
-        console.log("dec");
-        this.fontSize -= 1;
-        game.css('fontSize', this.fontSize + 'px');
-    };
-    Game.prototype.incSize = function() {
-        var game = $('.GameCanvas');
-        console.log("inc");
-        this.fontSize += 1;
-        game.css('fontSize', this.fontSize + 'px');
-    };
-
 
     /**
      * Runs every frame. Calculates a delta and allows each game
@@ -187,6 +169,25 @@ window.Game = (function() {
             });
     };
 
+    Game.prototype.updateFont = function(){
+        var game = $('.GameCanvas');
+        game.css('fontSize', this.fontSize + 'px');
+    };
+    Game.prototype.fitSize = function() {
+        this.fontSize = Math.min(
+            window.innerWidth / 102.4,
+            window.innerHeight / 57.6
+        );
+        this.updateFont();
+    };
+    Game.prototype.decSize = function() {
+        this.fontSize -= 1;
+        this.updateFont();
+    };
+    Game.prototype.incSize = function() {
+        this.fontSize += 1;
+        this.updateFont();
+    };
 
     /**
      * Some shared constants.

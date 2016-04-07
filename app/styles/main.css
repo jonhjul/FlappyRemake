@@ -5,13 +5,16 @@
     width: 5em;
     height: 5em;
     /* background: red; */
+
 }
 .Player--bird {
     position: absolute;
     left: -1.25em;
-    top: -1.5em;
+    top: -1em;
     height: 7.5em;
     width: 7.5em;
+    background-image: url(/images/bird2.png);
+    background-repeat: no-repeat;
     -webkit-transition: 0.2s ease-in-out;
     -moz-transition: 0.2 ease-in-out;
     -webkit-transform-origin: 100% 0;
@@ -21,17 +24,18 @@
 .Player--wings {
     /* Positioned from top left of parent.*/
     position: absolute;
-    left: -0.7em;
-    top: -0.1em;
-    height: 3em;
-    width: 3em;
-    transform-origin: 50% 50%;
+    left: -1em;
+    top: 0em;
+    height: 5em;
+    width: 5em;
+    background-image: url(/images/birdwing5.png) no-repeat;
     animation: 0.4s flap alternate infinite;
-
+    -webkit-transition: 0.2s ease-in-out;
+    -moz-transition: 0.2 ease-in-out;
 }
+
 @keyframes flap {
     from {
-
         transform: rotateX(50deg);
     }
     to {
@@ -136,7 +140,7 @@ body {
 
 .BackgroundTrees{
   position: absolute;
-  top: 86%;
+  top: 82%;
   left: 0%;
   background-image:url('../images/bgTrees3.png');
   background-repeat: repeat-x;
@@ -148,10 +152,10 @@ body {
 .BackgroundCity{
   position: absolute;
   left: 0%;
-  top: 76%;
+  top: 70%;
   background-image: url('../images/bgCity2.png');
   background-repeat: repeat-x;;
-  background-size: 30em;
+  background-size: 35em;
   width: 150em;
   height: 15em;
 }
@@ -159,12 +163,12 @@ body {
 .BackgroundClouds{
   position: absolute;
   left: 0%;
-  top: 72%;
+  top: 61%;
   width: 150%;
   height: 10em;
   background-image: url('../images/bgCityClouds2.png');
   background-repeat: repeat-x;
-  background-size: 20em;
+  background-size: 40em;
 }
 .Clouds {
     position: absolute;
