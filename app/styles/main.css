@@ -30,9 +30,11 @@
     height: 5em;
     width: 5em;
     background-image: url(/images/birdwing5.png) no-repeat;
-    animation: 0.4s flap alternate infinite;
     -webkit-transition: 0.2s ease-in-out;
     -moz-transition: 0.2 ease-in-out;
+}
+.Player--flap{
+    animation: 0.4s flap; /*alternate infinite;*/
 }
 
 @keyframes flap {

@@ -50,11 +50,15 @@ window.Player = (function() {
         } else {
             this.el.css('transform', 'translateZ(0) translate(' + this.pos.x + 'em, ' + this.pos.y + 'em)');
         }
+        var playerWings = this.el.find('.Player--wings');
 
         this.jumped = Controls.didJump();
         if (this.jumped) {
             //  Inntak controlsins að hoppa! Hvort það sé að þú sért að hoppa upp einusinni eða oftar
             // console.log('Hoppar einusinni eða hoppar oft!');
+
+            playerWings.addClass('Player--flap');
+
             this.game.hasStarted = true;
             SPEED = this.JUMP_SPEED;
             var wing = document.getElementById('sfx_wing');
@@ -70,6 +74,7 @@ window.Player = (function() {
             // Fyrsta stökk upp
             // console.log('Er að hoppa upp hér!');
             // For bird
+            playerWings.addClass('Player--flap');
             if (this.pos.y < -1 && this.isPlaying) {} else {
                 this.pos.y -= delta * SPEED + 0.6;
                 this.velocity = 0;
@@ -88,6 +93,7 @@ window.Player = (function() {
             this.game.isPlaying = true;
             this.isJumping = true;
         } else if (this.jumped && this.isJumping) {
+            playerWings.addClass('Player--flap');
             // Ef þú ýtir á takkann oft, þá ertu hérna
             // console.log('Hoppa oft!');
             SPEED = (this.JUMP_SPEED);
@@ -126,6 +132,7 @@ window.Player = (function() {
             this.el.css('transform', 'translateZ(0) translate(' + this.pos.x + 'em, ' + this.pos.y + 'em)');
         } else {
             if (SPEED < 2) {
+                playerWings.removeClass('Player--flap');
                 // Hérna byrja ég að snúast niður
                 SPEED += 0.5;
             } else {
@@ -152,7 +159,7 @@ window.Player = (function() {
     };
 
     Player.prototype.checkCollisionWithPipes = function() {
-        var playerX = this.pos.x + 23;
+      /*  var playerX = this.pos.x + 23;
         var playerY = Math.floor(this.pos.y);
         var hit = document.getElementById('sfx_hit');
         hit.volume = 0.5;
@@ -187,7 +194,7 @@ window.Player = (function() {
                     }
                 }
             }
-        }
+        }*/
     };
 
     Player.prototype.checkCollisionWithBounds = function() {
