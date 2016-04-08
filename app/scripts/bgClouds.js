@@ -2,7 +2,7 @@ window.bgClouds = (function() {
     'use strict';
     // All these constants are in em's, multiply by 10 pixels
     // for 1024x576px canvas.
-    var SPEED = 8; // * 10 pixels per second
+    var SPEED = 6; // * 10 pixels per second
   //var WINDOW_WIDTH = SPEED / $(window).width();
     var bgClouds = function(el, game, initX, initY, width) {
         this.el = el;
