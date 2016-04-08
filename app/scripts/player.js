@@ -6,8 +6,8 @@ window.Player = (function() {
     // All these constants are in em's, multiply by 10 pixels
     // for 1024x576px canvas.
     var SPEED = 5; // * 10 pixels per second
-    var WIDTH = 5;
-    var HEIGHT = 5;
+    var WIDTH = 6;
+    var HEIGHT = 6;
     var INITIAL_POSITION_X = 30;
     var INITIAL_POSITION_Y = 25;
     var GRAVITY = 0.5;
@@ -81,15 +81,6 @@ window.Player = (function() {
                 $('.Player--bird').css('transform', 'translateZ(0) rotate(-45deg)');
                 this.degs = 65;
             }
-            // For wings
-            /*
-            if (this.pos.x < -1) {} else {
-                this.pos.x -= delta * SPEED + 0.6;
-                this.velocity = 0;
-                $('.Player--wings').css('transform', 'translateZ(0) rotate(35deg)');
-                this.degs = -65;
-            }
-            */
             this.game.isPlaying = true;
             this.isJumping = true;
         } else if (this.jumped && this.isJumping) {
@@ -108,23 +99,7 @@ window.Player = (function() {
                 this.pos.y += delta * SPEED + this.velocity;
                 this.velocity += SPEED * 0.0005;
                 $('.Player--bird').css('transform', 'translateZ(0) rotate(0)');
-                $('.Player--wing').css('transform', 'translateZ(0) rotate(0)');
-                if (Math.floor(this.degs) < 70) {
-                    //  this.degs += delta * SPEED * 8;
-                } else {
-                    this.degs = 70;
-                }
-                /*
-                // For wings
-                this.pos.x+= delta * SPEED + this.velocity;
-                this.velocity += SPEED * 0.0005;
-                $('flap').css('transform', 'translateZ(0) rotateX(0)');
-                if (Math.floor(this.degs) < 70) {
-                    this.degs += delta * SPEED * 8;
-                } else {
-                    this.degs = 70;
-                }
-                */
+
                 this.isJumping = false;
             }
             // Update UI
@@ -138,12 +113,6 @@ window.Player = (function() {
                 // Hérna byrja ég að fara niður með nefið beint í jörðina
                 // console.log('ELSE SPEED         ' + SPEED);
                 $('.Player--bird').css('transform', 'translateZ(0) rotate(45deg)');
-                if (Math.floor(this.degs) < 70) {
-                    //      this.degs += delta * SPEED * 0.4;
-                } else {
-                    //    this.degs = 10;
-                    // console.log(this.degs);
-                }
                 SPEED = (this.JUMP_SPEED);
             }
             if (this.game.hasStarted) {
@@ -188,7 +157,6 @@ window.Player = (function() {
                             point.currentTime = 0;
                             point.play();
                         }
-                        // $('.Game-Score').css("background-image", "url(images/font_big_0.png)");
                         this.scorePipe = this.game.pipe.pipeArr[i].name;
                     }
                 }
@@ -201,9 +169,12 @@ window.Player = (function() {
         if (this.pos.x < 0 ||
             this.pos.x + WIDTH > this.game.WORLD_WIDTH ||
             this.pos.y < 0 ||
-            this.pos.y + HEIGHT > this.game.WORLD_HEIGHT - 6.9) {
+            this.pos.y + HEIGHT +6> this.game.WORLD_HEIGHT) {
             var die = document.getElementById('sfx_die');
             die.volume = 0.5;
+            console.log("Collision");
+            var isMute = document.getElementById('sound');
+            console.log(isMute.style);
             if (!this.game.mute) {
                 die.pause();
                 die.currentTime = 0;

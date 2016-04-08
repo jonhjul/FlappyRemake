@@ -15,32 +15,16 @@ window.Game = (function() {
         this.Trees = new window.Trees(this.el.find('.BackgroundTrees'), this, 0, 0, 5.9);
         this.City = new window.City(this.el.find('.BackgroundCity'), this, 0, 0, 35);
         this.bgClouds = new window.bgClouds(this.el.find('.BackgroundClouds'), this, 0, 0, 39.9);
-        // this.pipes = new window.Pipes(this.el.find('.Pipes'), this);
         this.isPlaying = false;
         this.score = -1;
         this.highscore = 0;
-      /*  this.fontSize = Math.min(
-            window.innerWidth / 102.4,
-            window.innerHeight / 57.6
-        );
-        console.log(this.fontSize);*/
-        this.mute = false;
-        // this.tube = [];
-        // this.tube.push(new window.Tube(this.el.find('.Tube1'), this.WORLD_WIDTH + this.tubeDist * 3, 35, 30, this.tubeWidth, this, false));
-        // this.tube.push(new window.Tube(this.el.find('.Tube2'), this.WORLD_WIDTH + this.tubeDist * 3, 0, 15, this.tubeWidth, this, true));
-        // this.isPlaying = false;
-        // this.hasStarted = false;
-        //this.toggleSound();
-        //this.toggleSound();
         var vid = document.getElementById('theme_music');
         vid.play();
         vid.volume = 0.1;
         this.fitSize();
-      //  console.log(this);
 
         // Cache a bound onFrame since we need it each frame.
         this.onFrame = this.onFrame.bind(this);
-      //  this.toggleSound();
     };
 
     /**
@@ -83,7 +67,6 @@ window.Game = (function() {
                 .find('.Start-restart')
                 .one('click', function() {
                     $(".Ground, .Pipedown1, .Pipedown2, .Pipedown3, .Pipeup1, .Pipeup2, .Pipeup3, .Player,.Player--bird,.Player--wing").show();
-                    // $('.Ground').css('animation-play-state', 'running', '-webkit-animation-play-state', 'running');
                     StartEl.removeClass('is-visible');
                     //that.start();
                     that.reset();
