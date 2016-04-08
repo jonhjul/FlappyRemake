@@ -40,7 +40,7 @@ window.Game = (function() {
 
         // Cache a bound onFrame since we need it each frame.
         this.onFrame = this.onFrame.bind(this);
-        this.toggleSound();
+      //  this.toggleSound();
     };
 
     /**
@@ -112,7 +112,6 @@ window.Game = (function() {
 
 
     Game.prototype.toggleSound = function() {
-        console.log("Toggle Sound");
         /*
                 $(".sound").click(function(e) {
                     e.preventDefault();

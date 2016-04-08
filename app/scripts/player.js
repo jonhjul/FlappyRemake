@@ -93,7 +93,6 @@ window.Player = (function() {
             this.game.isPlaying = true;
             this.isJumping = true;
         } else if (this.jumped && this.isJumping) {
-            playerWings.addClass('Player--flap');
             // Ef þú ýtir á takkann oft, þá ertu hérna
             // console.log('Hoppa oft!');
             SPEED = (this.JUMP_SPEED);
@@ -111,7 +110,7 @@ window.Player = (function() {
                 $('.Player--bird').css('transform', 'translateZ(0) rotate(0)');
                 $('.Player--wing').css('transform', 'translateZ(0) rotate(0)');
                 if (Math.floor(this.degs) < 70) {
-                  //  this.degs += delta * SPEED * 8;
+                    //  this.degs += delta * SPEED * 8;
                 } else {
                     this.degs = 70;
                 }
@@ -140,9 +139,9 @@ window.Player = (function() {
                 // console.log('ELSE SPEED         ' + SPEED);
                 $('.Player--bird').css('transform', 'translateZ(0) rotate(45deg)');
                 if (Math.floor(this.degs) < 70) {
-              //      this.degs += delta * SPEED * 0.4;
+                    //      this.degs += delta * SPEED * 0.4;
                 } else {
-                //    this.degs = 10;
+                    //    this.degs = 10;
                     // console.log(this.degs);
                 }
                 SPEED = (this.JUMP_SPEED);
@@ -159,7 +158,7 @@ window.Player = (function() {
     };
 
     Player.prototype.checkCollisionWithPipes = function() {
-      /*  var playerX = this.pos.x + 23;
+        var playerX = this.pos.x + 23;
         var playerY = Math.floor(this.pos.y);
         var hit = document.getElementById('sfx_hit');
         hit.volume = 0.5;
@@ -194,7 +193,7 @@ window.Player = (function() {
                     }
                 }
             }
-        }*/
+        }
     };
 
     Player.prototype.checkCollisionWithBounds = function() {
@@ -202,7 +201,7 @@ window.Player = (function() {
         if (this.pos.x < 0 ||
             this.pos.x + WIDTH > this.game.WORLD_WIDTH ||
             this.pos.y < 0 ||
-            this.pos.y + HEIGHT > this.game.WORLD_HEIGHT -6.9) {
+            this.pos.y + HEIGHT > this.game.WORLD_HEIGHT - 6.9) {
             var die = document.getElementById('sfx_die');
             die.volume = 0.5;
             if (!this.game.mute) {
